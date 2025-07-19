@@ -7,6 +7,7 @@ export const ROUTES: Record<string, string> = {
   SIGN_IN: 'sign-in',
   ROOT: '',
   DASHBOARD: 'dashboard',
+  ADMIN: 'admin',
 }
 
 export const ACTIONS_ROUTES: Record<string, string> = {
@@ -21,9 +22,9 @@ export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
     name: undefined,
     links: [
       {
-        name: 'Admin',
-        url: ROUTES.DASHBOARD,
-        icon: ICONS.DASHBOARD,
+        name: PAGE_NAMES.ADMIN,
+        url: ROUTES.ADMIN,
+        icon: ICONS.ADMIN,
         roles: [Role.ADMIN],
       },
     ],
@@ -36,12 +37,6 @@ export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
         url: ROUTES.DASHBOARD,
         icon: ICONS.DASHBOARD,
         roles: [Role.FREE, Role.PRO, Role.ADMIN],
-      },
-      {
-        name: 'Oui oui',
-        url: ROUTES.DASHBOARD,
-        icon: ICONS.DASHBOARD,
-        roles: [Role.PRO, Role.ADMIN],
       },
     ],
   },
