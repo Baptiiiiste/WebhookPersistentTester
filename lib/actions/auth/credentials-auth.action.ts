@@ -4,6 +4,7 @@ import { signIn } from '@/lib/auth/handlers'
 import type { SignInSchema } from '@/lib/schemas/auth.schema'
 import { AuthError } from 'next-auth'
 import { redirect } from 'next/navigation'
+import { ROUTES } from '@/constants/routes'
 
 export async function credentialsAuthAction(values: SignInSchema) {
   try {
@@ -13,7 +14,7 @@ export async function credentialsAuthAction(values: SignInSchema) {
       redirect: false,
     })
 
-    redirect('/dashboard')
+    redirect(ROUTES.DASHBOARD)
   } catch (error) {
     if (error instanceof AuthError && error.type === 'CredentialsSignin') {
       return {

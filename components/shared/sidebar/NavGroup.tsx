@@ -29,11 +29,9 @@ export function NavGroup({
   const pathname = usePathname()
   const userRole = session.user?.role
 
-  // Filtrer les liens visibles
   const visiblePages = pages.filter((item) => {
     const roles = item.roles ?? []
 
-    // Si le lien est admin uniquement et que l'utilisateur n'est pas admin, on le masque
     const isAdminOnly = roles.length === 1 && roles[0] === Role.ADMIN
     if (isAdminOnly && userRole !== Role.ADMIN) {
       return false
@@ -42,7 +40,6 @@ export function NavGroup({
     return true
   })
 
-  // Si aucun lien n'est visible, on ne rend pas le groupe
   if (visiblePages.length === 0) {
     return null
   }
