@@ -1,3 +1,4 @@
 export const IMAGES = {
-  LOGO_BLACK: '/images/logo_black.png',
+  LOGO: '/images/logo.png',
+  GOOGLE_ICON: '/images/google.png',
 }

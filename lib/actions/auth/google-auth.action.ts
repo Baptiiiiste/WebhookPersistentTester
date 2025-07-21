@@ -6,6 +6,6 @@ import { ROUTES } from '@/constants/routes'
 export async function googleAuthAction() {
   await signIn('google', {
     redirect: true,
-    callbackUrl: ROUTES.DASHBOARD,
+    callbackUrl: `/${ROUTES.DASHBOARD}`,
   })
 }

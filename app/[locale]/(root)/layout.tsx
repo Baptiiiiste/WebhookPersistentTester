@@ -8,7 +8,7 @@ import { ROUTES } from '@/constants/routes'
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await auth()
   if (!session) {
-    redirect(ROUTES.SIGN_IN)
+    redirect('/' + ROUTES.SIGN_IN)
   }
 
   return (

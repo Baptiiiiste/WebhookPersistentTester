@@ -3,7 +3,7 @@ import type { NextAuthConfig } from 'next-auth'
 
 export const AUTH_CONFIG: NextAuthConfig = {
   pages: {
-    signIn: ROUTES.SIGN_IN,
+    signIn: '/' + ROUTES.SIGN_IN,
   },
 
   cookies: {

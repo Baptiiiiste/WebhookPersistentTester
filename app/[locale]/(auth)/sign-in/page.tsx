@@ -1,8 +1,8 @@
 import * as React from 'react'
 import type { SignInSchema } from '@/lib/schemas/auth.schema'
-import { SignInForm } from '@/components/pages/(auth)/sign-in/SignInForm'
 import { credentialsAuthAction } from '@/lib/actions/auth/credentials-auth.action'
 import { googleAuthAction } from '@/lib/actions/auth/google-auth.action'
+import { SignInForm } from '@/components/pages/(auth)/sign-in/SignInForm'
 
 export default function Page() {
   async function handleSignInCredentials(values: SignInSchema) {

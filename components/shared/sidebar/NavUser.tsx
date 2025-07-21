@@ -73,7 +73,7 @@ export function NavUser({ session }: { session: Session }) {
             <DropdownMenuItem
               onClick={() =>
                 signOut({
-                  redirectTo: ROUTES.SIGN_IN,
+                  redirectTo: '/' + ROUTES.SIGN_IN,
                 })
               }
             >
