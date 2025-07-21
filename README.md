@@ -1,20 +1,38 @@
-## Pré-requis
+# Echo
 
-- Node.js (version 22.14.0 ou supérieure): [https://nodejs.org/fr](https://nodejs.org/fr) ou utiliser nvm
-- pnpm (version 10.6.3 ou supérieure): `npm i pnpm`
+Get feedback from your users with Echo, a simple and elegant feedback tool.
+Side project that could be a SaaS in the future.
 
-## Mettre à jour les variables d'environnements
+## Installation
 
-Créer un fichier d'environement .env à la racine du projet contenant:
+- Node.js (version 22.14.0 or +): [https://nodejs.org/fr](https://nodejs.org/fr) or use nvm
+- pnpm (or +): `npm i pnpm`
+
+## Configuration
+
+Create a .env file at the root of the project containing:
 
 ```dotenv
-# Authentication
+# ENVIRONMENT
+NODE_ENV=development
+
+# AUTHENTICATION (Credentials)
 NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=CLE_TRES_LONGUE_ET_COMPLEXE
+NEXTAUTH_SECRET=YOUR_NEXTAUTH_SECRET
+SALT_ROUNDS=10
+
+# AUTHENTICATION (Google)
+GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
+
+# DATABASE (PostgreSQL)
+DATABASE_URL=postgresql://user:password@localhost:5432/db
+
 ```
 
-## Lancer le projet
+## Usage
 
-Installer les dépendances : `pnpm install`\
-Lancer le serveur de développement : `pnpm dev`\
-Accéder à l'application : [http://localhost:3000](http://localhost:3000)
+Install dependencies : `pnpm install`\
+Start database : `docker-compose up -d`\
+Start development server : `pnpm dev`\
+Use it : [http://localhost:3000](http://localhost:3000)
