@@ -1,18 +1,18 @@
 import * as React from 'react'
 import type { SignInSchema } from '@/lib/schemas/auth.schema'
+import { signInCredentialsAction } from '@/lib/actions/auth/sign-in-credentials.action'
+import { signInGoogleAction } from '@/lib/actions/auth/sign-in-google.action'
 import { SignInForm } from '@/components/pages/(auth)/sign-in/SignInForm'
-import { credentialsAuthAction } from '@/lib/actions/auth/credentials-auth.action'
-import { googleAuthAction } from '@/lib/actions/auth/google-auth.action'
 
 export default function Page() {
   async function handleSignInCredentials(values: SignInSchema) {
     'use server'
-    return credentialsAuthAction(values)
+    return signInCredentialsAction(values)
   }
 
   async function handleSignInGoogle() {
     'use server'
-    return googleAuthAction()
+    return signInGoogleAction()
   }
 
   return (

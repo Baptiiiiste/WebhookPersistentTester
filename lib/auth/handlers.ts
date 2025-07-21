@@ -2,9 +2,9 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import { AUTH_CONFIG } from '@/lib/auth/config'
-import { authorizeWithCredentials } from '@/lib/actions/auth/authorize-credentials.action'
-import { syncGoogleUser } from '@/lib/actions/auth/sync-google.action'
+import { authorizeCredentialsAction } from '@/lib/actions/auth/authorize-credentials.action'
 import type { Role } from '@prisma/client'
+import { authorizeGoogleAction } from '@/lib/actions/auth/authorize-google.action'
 
 declare module 'next-auth' {
   interface Session {
@@ -45,7 +45,7 @@ export const { signIn, signOut, handlers, auth } = NextAuth({
           return null
         }
 
-        return await authorizeWithCredentials(
+        return await authorizeCredentialsAction(
           credentials.email,
           credentials.password,
         )
@@ -62,7 +62,7 @@ export const { signIn, signOut, handlers, auth } = NextAuth({
           response_type: 'code',
         },
       },
-      profile: syncGoogleUser,
+      profile: authorizeGoogleAction,
     }),
   ],
 })

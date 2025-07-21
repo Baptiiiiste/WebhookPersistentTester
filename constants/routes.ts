@@ -5,6 +5,7 @@ import { Role } from '@prisma/client'
 
 export const ROUTES: Record<string, string> = {
   SIGN_IN: 'sign-in',
+  SIGN_UP: 'sign-up',
   ROOT: '',
   DASHBOARD: 'dashboard',
   ADMIN: 'admin',

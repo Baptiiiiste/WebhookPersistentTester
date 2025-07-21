@@ -1,0 +1,53 @@
+{
+  "Auth": {
+    "SignInPage": {
+      "Title": "Vous revoilà",
+      "Subtitle": "Connectez-vous avec votre compte Google",
+      "Methods": {
+        "Google": "Se connecter avec Google",
+        "Email": "Ou se connecter avec"
+      },
+      "Form": {
+        "Email": "Adresse e-mail",
+        "Password": "Mot de passe",
+        "Submit": "Se connecter",
+        "Errors": {
+          "InvalidCredentials": "Identifiants invalides",
+          "GenericError": "Une erreur est survenue, veuillez réessayer plus tard"
+        }
+      },
+      "Footer": {
+        "NoAccount": "Vous n'avez pas de compte ? ",
+        "SignUp": "S'inscrire"
+      }
+    },
+    "SignUpPage": {
+      "Title": "Bienvenue",
+      "Subtitle": "Connectez-vous avec votre compte Google",
+      "Methods": {
+        "Google": "Se connecter avec Google",
+        "Email": "Ou s'inscrire avec"
+      },
+      "Form": {
+        "Username": "Pseudo",
+        "Email": "Adresse e-mail",
+        "Password": "Mot de passe",
+        "Submit": "S'inscrire",
+        "Errors": {
+          "EmailAlreadyTaken": "Cette adresse e-mail est déjà utilisée",
+          "GenericError": "Une erreur est survenue, veuillez réessayer plus tard"
+        }
+      },
+      "Footer": {
+        "AlreadyHaveAccount": "Vous avez déjà un compte ? ",
+        "SignIn": "Se connecter"
+      }
+    },
+    "Footer": {
+      "Title": "En vous connectant, vous acceptez nos",
+      "Terms": "Conditions d'utilisation",
+      "AndConditions": " et notre ",
+      "Privacy": "Politique de confidentialité"
+    }
+  }
+}

@@ -11,8 +11,8 @@ import {
 import { CustomInput } from '@/components/shared/form/inputs/CustomInput'
 import { Form, FormRootError } from '@/components/ui/form'
 import { useForm } from 'react-hook-form'
-import type { SignInSchema } from '@/lib/schemas/auth.schema'
-import { signInSchema } from '@/lib/schemas/auth.schema'
+import type { SignUpSchema } from '@/lib/schemas/auth.schema'
+import { signUpSchema } from '@/lib/schemas/auth.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useFormAction } from '@/hooks/useFormAction'
 import type { FormActionCallback } from '@/types/form'
@@ -26,16 +26,17 @@ import Image from 'next/image'
 import { SubmitButton } from '@/components/shared/form/SubmitButton'
 
 interface Props {
-  action: FormActionCallback<SignInSchema>
+  action: FormActionCallback<SignUpSchema>
   googleAuthAction: any
 }
 
-export function SignInForm({ action }: Props) {
-  const t = useTranslations('Auth.SignInPage')
+export function SignUpForm({ action }: Props) {
+  const t = useTranslations('Auth.SignUpPage')
 
-  const form = useForm<SignInSchema>({
-    resolver: zodResolver(signInSchema),
+  const form = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
+      username: '',
       email: '',
       password: '',
     },
@@ -84,6 +85,17 @@ export function SignInForm({ action }: Props) {
                 <div className="grid gap-6">
                   <CustomInput
                     control={form.control}
+                    name="username"
+                    label={t('Form.Username')}
+                    placeholder="John"
+                    disabled={form.formState.isSubmitting}
+                    inputProps={{
+                      autoComplete: 'name',
+                      autoCorrect: 'off',
+                    }}
+                  />
+                  <CustomInput
+                    control={form.control}
                     name="email"
                     label={t('Form.Email')}
                     placeholder="john@doe.com"
@@ -115,12 +127,12 @@ export function SignInForm({ action }: Props) {
                   </SubmitButton>
                 </div>
                 <div className="text-center text-sm">
-                  {t('Footer.NoAccount')}
+                  {t('Footer.AlreadyHaveAccount')}
                   <Link
-                    href={`/${ROUTES.SIGN_UP}`}
+                    href={`/${ROUTES.SIGN_IN}`}
                     className="underline underline-offset-4"
                   >
-                    {t('Footer.SignUp')}
+                    {t('Footer.SignIn')}
                   </Link>
                 </div>
               </div>
