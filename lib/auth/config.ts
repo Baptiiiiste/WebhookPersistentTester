@@ -56,7 +56,7 @@ export const AUTH_CONFIG: NextAuthConfig = {
       return session
     },
     async redirect({ url, baseUrl }) {
-      return ROUTES.DASHBOARD
+      return `/${ROUTES.DASHBOARD}`
     },
   },
 

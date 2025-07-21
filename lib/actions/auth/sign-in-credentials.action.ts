@@ -1,21 +1,22 @@
 'use server'
 
-import { signIn } from '@/lib/auth/handlers'
-import type { SignInSchema } from '@/lib/schemas/auth.schema'
 import { AuthError } from 'next-auth'
-import { redirect } from 'next/navigation'
+import type { SignInSchema } from '@/lib/schemas/auth.schema'
+import { signIn } from '@/lib/auth/handlers'
 import { ROUTES } from '@/constants/routes'
 
-export async function credentialsAuthAction(values: SignInSchema) {
+export async function signInCredentialsAction(values: SignInSchema) {
   try {
     await signIn('credentials', {
       email: values.email.toLowerCase(),
       password: values.password,
-      redirect: false,
+      callbackUrl: `/${ROUTES.DASHBOARD}`,
     })
-
-    redirect(ROUTES.DASHBOARD)
   } catch (error) {
+    if (error instanceof Error && error.message.includes('NEXT_REDIRECT')) {
+      throw error
+    }
+
     if (error instanceof AuthError && error.type === 'CredentialsSignin') {
       return {
         error: 'invalid_credentials',

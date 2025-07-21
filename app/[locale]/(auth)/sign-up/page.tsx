@@ -1,13 +1,13 @@
 import * as React from 'react'
-import type { SignInSchema } from '@/lib/schemas/auth.schema'
-import { signInCredentialsAction } from '@/lib/actions/auth/sign-in-credentials.action'
+import type { SignUpSchema } from '@/lib/schemas/auth.schema'
 import { signInGoogleAction } from '@/lib/actions/auth/sign-in-google.action'
-import { SignInForm } from '@/components/pages/(auth)/sign-in/SignInForm'
+import { SignUpForm } from '@/components/pages/(auth)/sign-up/SignUpForm'
+import { signUpCredentialsAction } from '@/lib/actions/auth/sign-up-credentials.action'
 
 export default function Page() {
-  async function handleSignInCredentials(values: SignInSchema) {
+  async function handleSignUpCredentials(values: SignUpSchema) {
     'use server'
-    return signInCredentialsAction(values)
+    return signUpCredentialsAction(values)
   }
 
   async function handleSignInGoogle() {
@@ -18,8 +18,8 @@ export default function Page() {
   return (
     <section className="flex flex-col items-center justify-center gap-8">
       <div className="w-sm">
-        <SignInForm
-          action={handleSignInCredentials}
+        <SignUpForm
+          action={handleSignUpCredentials}
           googleAuthAction={handleSignInGoogle}
         />
       </div>

@@ -48,7 +48,12 @@ export function CustomSidebar({
       </SidebarHeader>
       <SidebarContent>
         {SIDEBAR_LINKS.map((group: SidebarLinkGroupType) => (
-          <NavGroup pages={group.links} title={group.name} session={session} />
+          <NavGroup
+            pages={group.links}
+            title={group.name}
+            session={session}
+            key={group.name}
+          />
         ))}
       </SidebarContent>
       <SidebarFooter>
