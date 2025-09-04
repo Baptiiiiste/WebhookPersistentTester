@@ -1,6 +1,6 @@
 # WebhookPersistentTester
 
-A fullstack platform to test and replay your webhooks easily with a persistent endpoint
+A fullstack platform to test and replay your webhooks easily with a persistent endpoint\
 Side project that could be a SaaS in the future.
 
 ## Installation
