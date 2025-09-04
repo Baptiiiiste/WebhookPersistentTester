@@ -5,8 +5,8 @@ import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Echo :)',
-  description: 'Get feedbacks from your users',
+  title: 'Webhook Persistent Tester',
+  description: 'Collect and replay webhooks',
 }
 
 export default async function RootLayout({

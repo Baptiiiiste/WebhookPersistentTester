@@ -1,1 +1,1 @@
-export const SITENAME = 'Echo'
+export const SITENAME = 'Webhook Persistent Tester'

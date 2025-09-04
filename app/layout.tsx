@@ -3,8 +3,8 @@ import './globals.css'
 import type React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Echo',
-  description: 'Get feedbacks from your users',
+  title: 'Webhook Persistent Tester',
+  description: 'Collect and replay webhooks',
 }
 
 export default function RootLayout({
