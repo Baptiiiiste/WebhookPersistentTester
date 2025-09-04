@@ -1,63 +1,48 @@
 import { PageLayout } from '@/components/shared/PageLayout'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Folder } from 'lucide-react'
+import { PAGE_NAMES } from '@/constants/pages'
+import { ICONS } from '@/constants/icons'
+import { useTranslations } from 'next-intl'
+import DashboardInfoCard from '@/components/pages/(root)/Dashboard/DashboardInfoCard'
 
-export default async function DashboardPage() {
+export default function DashboardPage() {
+  const t = useTranslations('DashboardPage')
+
   return (
     <PageLayout.Root>
-      <PageLayout.Icon icon={Folder} color="#3b82f6" />
+      <PageLayout.Icon icon={ICONS.DASHBOARD} color="#3b82f6" />
 
-      <PageLayout.Title>Dashboard Feedback</PageLayout.Title>
+      <PageLayout.Title>{PAGE_NAMES.DASHBOARD}</PageLayout.Title>
 
-      <PageLayout.Description>
-        Gérez et analysez tous les retours de vos utilisateurs
-      </PageLayout.Description>
+      <PageLayout.Description>{t('Description')}</PageLayout.Description>
 
       <PageLayout.Content>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Feedbacks Récents</CardTitle>
-              <CardDescription>
-                Les derniers retours de vos utilisateurs
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Contenu de votre dashboard ici...
-              </p>
-            </CardContent>
-          </Card>
+          <DashboardInfoCard
+            title={t('InfoCard.RequestsCount.Title')}
+            description={t('InfoCard.RequestsCount.Description')}
+            content={
+              // TODO: Replace Data
+              "45/50"
+            }
+          />
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Statistiques</CardTitle>
-              <CardDescription>Métriques et analyses</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Graphiques et données...
-              </p>
-            </CardContent>
-          </Card>
+          <DashboardInfoCard
+            title={t('InfoCard.WebhooksCount.Title')}
+            description={t('InfoCard.WebhooksCount.Description')}
+            content={
+              // TODO: Replace Data
+              "1/1"
+            }
+          />
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Actions Rapides</CardTitle>
-              <CardDescription>Raccourcis utiles</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Boutons d'actions...
-              </p>
-            </CardContent>
-          </Card>
+          <DashboardInfoCard
+            title={t('InfoCard.Plan.Title')}
+            description={t('InfoCard.Plan.Description')}
+            content={
+              // TODO: Replace Data
+              "Admin"
+            }
+          />
         </div>
       </PageLayout.Content>
     </PageLayout.Root>

@@ -25,7 +25,7 @@ const Root: FC<PageLayoutProps> = ({ children }) => {
     <div className="flex flex-col">
       <div className="border-b bg-background px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-start gap-3">
+          <div className="flex items-center gap-3">
             {icon}
             <div className="flex flex-col">
               {title}

@@ -51,5 +51,22 @@
       "AndConditions": " et notre ",
       "Privacy": "Politique de confidentialité"
     }
+  },
+  "DashboardPage": {
+    "Description": "Informations générales",
+    "InfoCard": {
+      "RequestsCount": {
+        "Title": "Requêtes totales",
+        "Description": "Nombre total de requêtes effectuées"
+      },
+      "WebhooksCount": {
+        "Title": "Webhooks totaux",
+        "Description": "Nombre total de webhooks créés"
+      },
+      "Plan": {
+        "Title": "Votre plan",
+        "Description": "Détails de votre plan actuel"
+      }
+    }
   }
 }
