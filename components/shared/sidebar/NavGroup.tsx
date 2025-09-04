@@ -33,11 +33,7 @@ export function NavGroup({
     const roles = item.roles ?? []
 
     const isAdminOnly = roles.length === 1 && roles[0] === Role.ADMIN
-    if (isAdminOnly && userRole !== Role.ADMIN) {
-      return false
-    }
-
-    return true
+    return !(isAdminOnly && userRole !== Role.ADMIN)
   })
 
   if (visiblePages.length === 0) {
@@ -53,7 +49,7 @@ export function NavGroup({
 
           const hasAccess = roles.length === 0 || roles.includes(userRole)
           const isDisabled = !hasAccess
-          const isActive = pathname.startsWith(item.url)
+          const isActive = new RegExp(`^/[^/]+/${item.url}`).test(pathname)
 
           return (
             <Collapsible key={item.name} asChild>
