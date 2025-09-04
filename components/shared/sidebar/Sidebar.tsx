@@ -52,7 +52,7 @@ export function CustomSidebar({
             pages={group.links}
             title={group.name}
             session={session}
-            key={group.name}
+            key={group.name + Math.random().toString(36).substring(7)}
           />
         ))}
       </SidebarContent>
