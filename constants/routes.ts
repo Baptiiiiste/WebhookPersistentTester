@@ -31,7 +31,7 @@ export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
     ],
   },
   {
-    name: 'Feedbacks',
+    name: 'Webhooks',
     links: [
       {
         name: PAGE_NAMES.DASHBOARD,
@@ -41,4 +41,5 @@ export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
       },
     ],
   },
+
 ]

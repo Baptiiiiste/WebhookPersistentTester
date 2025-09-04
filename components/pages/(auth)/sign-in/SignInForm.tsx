@@ -24,6 +24,7 @@ import { signInGoogleAction } from '@/lib/actions/auth/sign-in-google.action'
 import { IMAGES } from '@/constants/images'
 import Image from 'next/image'
 import { SubmitButton } from '@/components/shared/form/SubmitButton'
+import { ENABLED_AUTH_PROVIDERS } from '@/constants/auth'
 
 interface Props {
   action: FormActionCallback<SignInSchema>
@@ -57,37 +58,13 @@ export function SignInForm({ action }: Props) {
               className="flex flex-col gap-4"
             >
               <div className="grid gap-6">
-                <div className="flex flex-col gap-4">
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={(event) => {
-                      event.preventDefault()
-                      signInGoogleAction()
-                    }}
-                  >
-                    <Image
-                      src={IMAGES.GOOGLE_ICON}
-                      alt="Google Icon"
-                      width={20}
-                      height={20}
-                      className="mr-2"
-                    />
-                    {t('Methods.Google')}
-                  </Button>
-                </div>
-                <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-                  <span className="bg-card text-muted-foreground relative z-10 px-2">
-                    {t('Methods.Email')}
-                  </span>
-                </div>
                 <div className="grid gap-6">
                   <CustomInput
                     control={form.control}
                     name="email"
                     label={t('Form.Email')}
                     placeholder="john@doe.com"
-                    disabled={form.formState.isSubmitting}
+                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
                     inputProps={{
                       autoCapitalize: 'none',
                       autoComplete: 'email',
@@ -100,7 +77,7 @@ export function SignInForm({ action }: Props) {
                     label={t('Form.Password')}
                     placeholder="••••••••••••"
                     type="password"
-                    disabled={form.formState.isSubmitting}
+                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
                     inputProps={{
                       autoComplete: 'current-password',
                       autoCorrect: 'off',
@@ -108,12 +85,59 @@ export function SignInForm({ action }: Props) {
                   />
                   <FormRootError />
                   <SubmitButton
-                    isSubmitting={form.formState.isSubmitting}
+                    isSubmitting={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
                     className="mt-4"
                   >
                     {t('Form.Submit')}
                   </SubmitButton>
                 </div>
+
+                <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+                  <span className="bg-card text-muted-foreground relative z-10 px-2">
+                    {t('Methods.Other')}
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={(event) => {
+                      event.preventDefault()
+                      signInGoogleAction()
+                    }}
+                    disabled={!ENABLED_AUTH_PROVIDERS.GOOGLE}
+                  >
+                    <Image
+                      src={IMAGES.GOOGLE_ICON}
+                      alt="Google Icon"
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                    />
+                    {t('Methods.Google')}
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={(event) => {
+                      event.preventDefault()
+                    //   TODO: Add Github OAuth
+                    }}
+                    disabled={!ENABLED_AUTH_PROVIDERS.GITHUB}
+                  >
+                    <Image
+                      src={IMAGES.GITHUB_ICON}
+                      alt="Github Icon"
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                    />
+                    {t('Methods.Google')}
+                  </Button>
+                </div>
+
                 <div className="text-center text-sm">
                   {t('Footer.NoAccount')}
                   <Link

@@ -2,10 +2,11 @@
   "Auth": {
     "SignInPage": {
       "Title": "Vous revoilà",
-      "Subtitle": "Connectez-vous avec votre compte Google",
+      "Subtitle": "Connectez-vous avec vos identifiants",
       "Methods": {
         "Google": "Se connecter avec Google",
-        "Email": "Ou se connecter avec"
+        "Github": "Se connecter avec Github",
+        "Other": "Ou se connecter avec"
       },
       "Form": {
         "Email": "Adresse e-mail",
@@ -23,10 +24,11 @@
     },
     "SignUpPage": {
       "Title": "Bienvenue",
-      "Subtitle": "Connectez-vous avec votre compte Google",
+      "Subtitle": "Inscrivez-vous avec vos identifiants",
       "Methods": {
         "Google": "Se connecter avec Google",
-        "Email": "Ou s'inscrire avec"
+        "Github": "Se connecter avec Github",
+        "Other": "Ou s'inscrire avec"
       },
       "Form": {
         "Username": "Pseudo",
