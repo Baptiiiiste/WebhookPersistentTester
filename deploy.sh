@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REGISTRY="docker.isima.fr"
-IMAGE_NAME="babonneau/echo"
+IMAGE_NAME="babonneau/webhookpersistenttester"
 TAG="latest"
 
 # Build pour linux/amd64 (compatible Portainer)

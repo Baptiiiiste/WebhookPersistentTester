@@ -3,12 +3,12 @@ version: '3.9'
 services:
   db:
     image: postgres:16
-    container_name: echo_db
+    container_name: wpt_db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: echo_user
-      POSTGRES_PASSWORD: echo_password
-      POSTGRES_DB: echo_db
+      POSTGRES_USER: wpt_user
+      POSTGRES_PASSWORD: wpt_password
+      POSTGRES_DB: wpt_db
     ports:
       - "5432:5432"
     volumes:
