@@ -1,5 +1,7 @@
 # WebhookPersistentTester
 
+![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)
+
 A fullstack platform to test and replay your webhooks easily with a persistent endpoint\
 Side project that could be a SaaS in the future.
 
