@@ -8,12 +8,43 @@ datasource db {
 }
 
 model User {
-  id       Int          @id @default(autoincrement())
-  email    String       @unique
-  username String
-  password String?
-  role     Role         @default(FREE)
-  provider AuthProvider @default(CREDENTIALS)
+  id        Int          @id @default(autoincrement())
+  email     String       @unique
+  username  String
+  password  String?
+  role      Role         @default(FREE)
+  provider  AuthProvider @default(CREDENTIALS)
+  webhooks  Webhook[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Webhook {
+  id          Int          @id @default(autoincrement())
+  url         String
+  requestLogs RequestLog[]
+  userId      Int
+  user        User         @relation(fields: [userId], references: [id])
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model RequestLog {
+  id        Int     @id @default(autoincrement())
+  webhookId Int
+  webhook   Webhook @relation(fields: [webhookId], references: [id])
+
+  method       String
+  url          String
+  headers      Json
+  queryParams  Json?
+  body         Json?
+  status       Int?
+  responseBody Json?
+
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
 }
 
 enum AuthProvider {

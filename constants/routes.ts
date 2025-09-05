@@ -19,6 +19,7 @@ export const ACTIONS_ROUTES: Record<string, string> = {
 
 export const PUBLIC_ROUTES: string[] = [
   ROUTES.SIGN_IN,
+  ROUTES.SIGN_UP,
   ROUTES.ROOT,
   ROUTES.PRICING,
 ]
