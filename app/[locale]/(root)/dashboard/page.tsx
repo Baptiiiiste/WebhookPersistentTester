@@ -6,6 +6,7 @@ import { getTranslations } from 'next-intl/server'
 import { auth } from '@/lib/auth/handlers'
 import { Role } from '@prisma/client'
 import { UpgradePlanButton } from '@/components/shared/button/UpgradePlanButton'
+import { PLANS } from '@/constants/plans'
 
 export default async function DashboardPage() {
   const t = await getTranslations('DashboardPage')
@@ -26,8 +27,13 @@ export default async function DashboardPage() {
             title={t('InfoCard.RequestsCount.Title')}
             description={t('InfoCard.RequestsCount.Description')}
             content={
-              // TODO: Replace Data
-              '45/50'
+              <div className="flex gap-4 items-end justify-between">
+                {/*TODO: Replace data*/}
+                <span className="font-bold text-2xl">45</span>
+                <span className="text-gray-500">
+                  /{PLANS[session?.user.role || Role.FREE].maxRequests}
+                </span>
+              </div>
             }
           />
 
@@ -35,8 +41,13 @@ export default async function DashboardPage() {
             title={t('InfoCard.WebhooksCount.Title')}
             description={t('InfoCard.WebhooksCount.Description')}
             content={
-              // TODO: Replace Data
-              '1/1'
+              <div className="flex gap-4 items-end justify-between">
+                {/*TODO: Replace data*/}
+                <span className="font-bold text-2xl">7</span>
+                <span className="text-gray-500">
+                  /{PLANS[session?.user.role || Role.FREE].maxWebhooks}
+                </span>
+              </div>
             }
           />
 
@@ -45,12 +56,16 @@ export default async function DashboardPage() {
             description={t('InfoCard.Plan.Description')}
             content={
               session?.user.role === Role.FREE ? (
-                <div className="flex justify-between items-center">
-                  {tConfig(`Plans.${session?.user.role}`)}
+                <div className="flex justify-between items-center h-full">
+                  <span className="text-2xl font-bold">
+                    {tConfig(`Plans.${session?.user.role}`)}
+                  </span>
                   <UpgradePlanButton size="icon" />
                 </div>
               ) : (
-                tConfig(`Plans.${session?.user.role}`)
+                <span className="text-2xl font-bold">
+                  {tConfig(`Plans.${session?.user.role}`)}
+                </span>
               )
             }
           />
