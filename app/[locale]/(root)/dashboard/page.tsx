@@ -3,15 +3,15 @@ import { PAGE_NAMES } from '@/constants/pages'
 import { ICONS } from '@/constants/icons'
 import DashboardInfoCard from '@/components/pages/(root)/Dashboard/DashboardInfoCard'
 import { getTranslations } from 'next-intl/server'
-import { auth } from '@/lib/auth/handlers'
 import { Role } from '@prisma/client'
 import { UpgradePlanButton } from '@/components/shared/button/UpgradePlanButton'
 import { PLANS } from '@/constants/plans'
+import { getLoggedUserAction } from '@/lib/actions/user/getLoggedUser.actions'
 
 export default async function DashboardPage() {
   const t = await getTranslations('DashboardPage')
   const tConfig = await getTranslations('Configuration')
-  const session = await auth()
+  const loggedUser = await getLoggedUserAction()
 
   return (
     <PageLayout.Root>
@@ -29,9 +29,14 @@ export default async function DashboardPage() {
             content={
               <div className="flex gap-4 items-end justify-between">
                 {/*TODO: Replace data*/}
-                <span className="font-bold text-2xl">45</span>
+                <span className="font-bold text-2xl">
+                  {loggedUser!.webhooks.reduce(
+                    (sum, w) => sum + w._count.requestLogs,
+                    0,
+                  )}
+                </span>
                 <span className="text-gray-500">
-                  /{PLANS[session?.user.role || Role.FREE].maxRequests}
+                  /{PLANS[loggedUser!.role].maxRequests}
                 </span>
               </div>
             }
@@ -43,9 +48,11 @@ export default async function DashboardPage() {
             content={
               <div className="flex gap-4 items-end justify-between">
                 {/*TODO: Replace data*/}
-                <span className="font-bold text-2xl">7</span>
+                <span className="font-bold text-2xl">
+                  {loggedUser!.webhooks.length}
+                </span>
                 <span className="text-gray-500">
-                  /{PLANS[session?.user.role || Role.FREE].maxWebhooks}
+                  /{PLANS[loggedUser!.role].maxWebhooks}
                 </span>
               </div>
             }
@@ -55,16 +62,16 @@ export default async function DashboardPage() {
             title={t('InfoCard.Plan.Title')}
             description={t('InfoCard.Plan.Description')}
             content={
-              session?.user.role === Role.FREE ? (
+              loggedUser!.role === Role.FREE ? (
                 <div className="flex justify-between items-center h-full">
                   <span className="text-2xl font-bold">
-                    {tConfig(`Plans.${session?.user.role}`)}
+                    {tConfig(`Plans.${loggedUser!.role}`)}
                   </span>
                   <UpgradePlanButton size="icon" />
                 </div>
               ) : (
                 <span className="text-2xl font-bold">
-                  {tConfig(`Plans.${session?.user.role}`)}
+                  {tConfig(`Plans.${loggedUser!.role}`)}
                 </span>
               )
             }

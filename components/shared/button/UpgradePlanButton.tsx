@@ -13,7 +13,7 @@ export function UpgradePlanButton({ size = 'default' }: Props) {
   const isIcon = size === 'icon'
 
   return (
-    <Button variant="secondary" asChild size={isIcon ? 'icon' : 'default'}>
+    <Button variant="default" asChild size={isIcon ? 'icon' : 'default'}>
       <Link href={`/${ROUTES.PRICING}`}>
         <ICONS.UPGRADE className={isIcon ? 'size-4' : 'mr-2 size-4'} />
         {!isIcon && t('Upgrade')}
