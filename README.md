@@ -36,3 +36,10 @@ Install dependencies : `pnpm install`\
 Start database : `docker-compose up -d`\
 Start development server : `pnpm dev`\
 Use it : [http://localhost:3000](http://localhost:3000)
+
+
+## License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.  
+See the [LICENSE](./LICENSE) file for details.
+
