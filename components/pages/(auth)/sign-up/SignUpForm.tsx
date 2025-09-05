@@ -65,7 +65,10 @@ export function SignUpForm({ action }: Props) {
                     name="username"
                     label={t('Form.Username')}
                     placeholder="John"
-                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
+                    disabled={
+                      form.formState.isSubmitting ||
+                      !ENABLED_AUTH_PROVIDERS.CREDENTIALS
+                    }
                     inputProps={{
                       autoComplete: 'name',
                       autoCorrect: 'off',
@@ -76,7 +79,10 @@ export function SignUpForm({ action }: Props) {
                     name="email"
                     label={t('Form.Email')}
                     placeholder="john@doe.com"
-                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
+                    disabled={
+                      form.formState.isSubmitting ||
+                      !ENABLED_AUTH_PROVIDERS.CREDENTIALS
+                    }
                     inputProps={{
                       autoCapitalize: 'none',
                       autoComplete: 'email',
@@ -89,7 +95,10 @@ export function SignUpForm({ action }: Props) {
                     label={t('Form.Password')}
                     placeholder="••••••••••••"
                     type="password"
-                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
+                    disabled={
+                      form.formState.isSubmitting ||
+                      !ENABLED_AUTH_PROVIDERS.CREDENTIALS
+                    }
                     inputProps={{
                       autoComplete: 'current-password',
                       autoCorrect: 'off',
@@ -154,7 +163,7 @@ export function SignUpForm({ action }: Props) {
                   {t('Footer.AlreadyHaveAccount')}
                   <Link
                     href={`/${ROUTES.SIGN_IN}`}
-                    className="underline underline-offset-4"
+                    className="underline underline-offset-4 hover:text-primary"
                   >
                     {t('Footer.SignIn')}
                   </Link>

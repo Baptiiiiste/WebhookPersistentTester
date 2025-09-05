@@ -64,7 +64,10 @@ export function SignInForm({ action }: Props) {
                     name="email"
                     label={t('Form.Email')}
                     placeholder="john@doe.com"
-                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
+                    disabled={
+                      form.formState.isSubmitting ||
+                      !ENABLED_AUTH_PROVIDERS.CREDENTIALS
+                    }
                     inputProps={{
                       autoCapitalize: 'none',
                       autoComplete: 'email',
@@ -77,7 +80,10 @@ export function SignInForm({ action }: Props) {
                     label={t('Form.Password')}
                     placeholder="••••••••••••"
                     type="password"
-                    disabled={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
+                    disabled={
+                      form.formState.isSubmitting ||
+                      !ENABLED_AUTH_PROVIDERS.CREDENTIALS
+                    }
                     inputProps={{
                       autoComplete: 'current-password',
                       autoCorrect: 'off',
@@ -85,7 +91,10 @@ export function SignInForm({ action }: Props) {
                   />
                   <FormRootError />
                   <SubmitButton
-                    isSubmitting={form.formState.isSubmitting || !ENABLED_AUTH_PROVIDERS.CREDENTIALS}
+                    isSubmitting={
+                      form.formState.isSubmitting ||
+                      !ENABLED_AUTH_PROVIDERS.CREDENTIALS
+                    }
                     className="mt-4"
                   >
                     {t('Form.Submit')}
@@ -123,7 +132,7 @@ export function SignInForm({ action }: Props) {
                     className="w-full"
                     onClick={(event) => {
                       event.preventDefault()
-                    //   TODO: Add Github OAuth
+                      //   TODO: Add Github OAuth
                     }}
                     disabled={!ENABLED_AUTH_PROVIDERS.GITHUB}
                   >
@@ -142,7 +151,7 @@ export function SignInForm({ action }: Props) {
                   {t('Footer.NoAccount')}
                   <Link
                     href={`/${ROUTES.SIGN_UP}`}
-                    className="underline underline-offset-4"
+                    className="underline underline-offset-4 hover:text-primary"
                   >
                     {t('Footer.SignUp')}
                   </Link>
