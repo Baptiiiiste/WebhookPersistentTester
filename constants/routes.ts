@@ -9,6 +9,7 @@ export const ROUTES: Record<string, string> = {
   ROOT: '',
   DASHBOARD: 'dashboard',
   ADMIN: 'admin',
+  PRICING: 'pricing',
 }
 
 export const ACTIONS_ROUTES: Record<string, string> = {
@@ -16,7 +17,11 @@ export const ACTIONS_ROUTES: Record<string, string> = {
   CREATE: 'new',
 }
 
-export const PUBLIC_ROUTES: string[] = [ROUTES.SIGN_IN, ROUTES.ROOT]
+export const PUBLIC_ROUTES: string[] = [
+  ROUTES.SIGN_IN,
+  ROUTES.ROOT,
+  ROUTES.PRICING,
+]
 
 export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
   {
@@ -41,5 +46,4 @@ export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
       },
     ],
   },
-
 ]

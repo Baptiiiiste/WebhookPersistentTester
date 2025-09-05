@@ -1,4 +1,12 @@
 {
+  "Configuration": {
+    "Plans": {
+      "FREE": "Gratuit",
+      "PRO": "Pro",
+      "ADMIN": "Administrateur",
+      "Upgrade": "Améliorer"
+    }
+  },
   "Auth": {
     "SignInPage": {
       "Title": "Vous revoilà",

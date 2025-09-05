@@ -9,6 +9,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  useSidebar,
 } from '@/components/ui/sidebar'
 import { NavGroup } from '@/components/shared/sidebar/NavGroup'
 import { NavUser } from '@/components/shared/sidebar/NavUser'
@@ -16,6 +17,8 @@ import { TeamSwitcher } from '@/components/shared/sidebar/TeamSwitcher'
 import { SIDEBAR_LINKS } from '@/constants/routes'
 import type { Session } from 'next-auth'
 import type { SidebarLinkGroupType } from '@/types/sidebar'
+import { Role } from '@prisma/client'
+import { UpgradePlanButton } from '@/components/shared/button/UpgradePlanButton'
 
 const data = {
   teams: [
@@ -41,6 +44,8 @@ export function CustomSidebar({
   session,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { session: Session }) {
+  const { state } = useSidebar()
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -56,7 +61,14 @@ export function CustomSidebar({
           />
         ))}
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="space-y-4">
+        {session.user.role === Role.FREE &&
+          (state === 'expanded' ? (
+            <UpgradePlanButton size="default" />
+          ) : (
+            <UpgradePlanButton size="icon" />
+          ))}
+
         <NavUser session={session} />
       </SidebarFooter>
       <SidebarRail />

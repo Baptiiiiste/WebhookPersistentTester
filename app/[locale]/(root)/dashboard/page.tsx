@@ -1,11 +1,16 @@
 import { PageLayout } from '@/components/shared/PageLayout'
 import { PAGE_NAMES } from '@/constants/pages'
 import { ICONS } from '@/constants/icons'
-import { useTranslations } from 'next-intl'
 import DashboardInfoCard from '@/components/pages/(root)/Dashboard/DashboardInfoCard'
+import { getTranslations } from 'next-intl/server'
+import { auth } from '@/lib/auth/handlers'
+import { Role } from '@prisma/client'
+import { UpgradePlanButton } from '@/components/shared/button/UpgradePlanButton'
 
-export default function DashboardPage() {
-  const t = useTranslations('DashboardPage')
+export default async function DashboardPage() {
+  const t = await getTranslations('DashboardPage')
+  const tConfig = await getTranslations('Configuration')
+  const session = await auth()
 
   return (
     <PageLayout.Root>
@@ -22,7 +27,7 @@ export default function DashboardPage() {
             description={t('InfoCard.RequestsCount.Description')}
             content={
               // TODO: Replace Data
-              "45/50"
+              '45/50'
             }
           />
 
@@ -31,7 +36,7 @@ export default function DashboardPage() {
             description={t('InfoCard.WebhooksCount.Description')}
             content={
               // TODO: Replace Data
-              "1/1"
+              '1/1'
             }
           />
 
@@ -39,8 +44,14 @@ export default function DashboardPage() {
             title={t('InfoCard.Plan.Title')}
             description={t('InfoCard.Plan.Description')}
             content={
-              // TODO: Replace Data
-              "Admin"
+              session?.user.role === Role.FREE ? (
+                <div className="flex justify-between items-center">
+                  {tConfig(`Plans.${session?.user.role}`)}
+                  <UpgradePlanButton size="icon" />
+                </div>
+              ) : (
+                tConfig(`Plans.${session?.user.role}`)
+              )
             }
           />
         </div>
