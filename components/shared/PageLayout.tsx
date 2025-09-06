@@ -4,9 +4,10 @@ import type { LucideIcon } from 'lucide-react'
 
 export type PageLayoutProps = {
   children: ReactNode
+  className?: string
 }
 
-const Root: FC<PageLayoutProps> = ({ children }) => {
+const Root: FC<PageLayoutProps> = ({ children, className }) => {
   const childrenArray = Children.toArray(children) as ReactElement[]
 
   const getChildByDisplayName = (name: string) =>
@@ -22,7 +23,7 @@ const Root: FC<PageLayoutProps> = ({ children }) => {
   const content = getChildByDisplayName('Content')
 
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col ${className}`}>
       <div className="border-b bg-background px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -40,17 +41,18 @@ const Root: FC<PageLayoutProps> = ({ children }) => {
   )
 }
 
-const Actions: FC<PageLayoutProps> = ({ children }) => (
-  <div className="flex items-center gap-2">{children}</div>
+const Actions: FC<PageLayoutProps> = ({ children, className }) => (
+  <div className={`flex items-center gap-2 ${className || ''}`}>{children}</div>
 )
 Actions.displayName = 'Actions'
 
-const Icon: FC<{ icon: LucideIcon; color: string }> = ({
+const Icon: FC<{ icon: LucideIcon; color: string; className?: string }> = ({
   icon: IconComponent,
   color,
+  className,
 }) => (
   <div
-    className="flex h-12 w-12 items-center justify-center rounded-lg"
+    className={`flex h-12 w-12 items-center justify-center rounded-lg ${className || ''}`}
     style={{ backgroundColor: `${color}1A` }}
   >
     <IconComponent className="h-6 w-6" style={{ color }} />
@@ -58,21 +60,24 @@ const Icon: FC<{ icon: LucideIcon; color: string }> = ({
 )
 Icon.displayName = 'Icon'
 
-Icon.displayName = 'Icon'
-
-const Title: FC<PageLayoutProps> = ({ children }) => (
-  <h1 className="text-2xl font-semibold tracking-tight">{children}</h1>
+const Title: FC<PageLayoutProps> = ({ children, className }) => (
+  <h1 className={`text-2xl font-semibold tracking-tight ${className || ''}`}>
+    {children}
+  </h1>
 )
 Title.displayName = 'Title'
 
-const Description: FC<PageLayoutProps> = ({ children }) => (
-  <p className="text-sm text-muted-foreground">{children}</p>
+const Description: FC<PageLayoutProps> = ({ children, className }) => (
+  <p className={`text-sm text-muted-foreground ${className || ''}`}>
+    {children}
+  </p>
 )
 Description.displayName = 'Description'
 
-const Content: FC<PageLayoutProps> = ({ children }) => (
-  <div className="p-6">{children}</div>
-)
+const Content: FC<{ children: ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => <div className={`${className || ''} p-6`}>{children}</div>
 Content.displayName = 'Content'
 
 export const PageLayout = {

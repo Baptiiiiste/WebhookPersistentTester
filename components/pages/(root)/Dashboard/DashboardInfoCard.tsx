@@ -13,11 +13,7 @@ type Props = {
   content: ReactNode
 }
 
-export default function DashboardInfoCard({
-  title,
-  description,
-  content,
-}: Props) {
+export function DashboardInfoCard({ title, description, content }: Props) {
   return (
     <Card>
       <CardHeader>

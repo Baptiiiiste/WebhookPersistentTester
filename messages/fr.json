@@ -74,7 +74,15 @@
       "Plan": {
         "Title": "Votre plan",
         "Description": "Détails de votre plan actuel"
-      }
+      },
+      "Webhooks": {
+        "Title": "Mes webhooks",
+        "Description": "Liste de vos webhooks actifs"
+      },
+        "Requests": {
+          "Title": "Activité récente des requêtes",
+          "Description": "Nombre de requêtes au cours des 7 derniers jours"
+        }
     }
   }
 }
