@@ -22,7 +22,7 @@ model User {
 model Webhook {
   id          Int          @id @default(autoincrement())
   name        String
-  url         String
+  url         String       @unique
   requestLogs RequestLog[]
   userId      Int
   user        User         @relation(fields: [userId], references: [id])
@@ -35,13 +35,11 @@ model RequestLog {
   webhookId Int
   webhook   Webhook @relation(fields: [webhookId], references: [id])
 
-  method       String
-  url          String
-  headers      Json
-  queryParams  Json?
-  body         Json?
-  status       Int?
-  responseBody Json?
+  method      String
+  origin      String?
+  headers     Json
+  queryParams Json?
+  body        Json?
 
   ip        String?
   userAgent String?

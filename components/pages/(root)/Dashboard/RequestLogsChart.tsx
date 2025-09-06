@@ -68,7 +68,7 @@ export function RequestLogsChart({ data }: Props) {
         />
         <Line
           dataKey="amount"
-          type="natural"
+          type="linear"
           stroke="var(--color-amount)"
           strokeWidth={2}
           dot={{
