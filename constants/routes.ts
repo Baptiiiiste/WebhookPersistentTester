@@ -10,6 +10,7 @@ export const ROUTES: Record<string, string> = {
   DASHBOARD: 'dashboard',
   ADMIN: 'admin',
   PRICING: 'pricing',
+  WEBHOOKS: 'webhooks',
 }
 
 export const ACTIONS_ROUTES: Record<string, string> = {
@@ -43,6 +44,12 @@ export const SIDEBAR_LINKS: SidebarLinkGroupType[] = [
         name: PAGE_NAMES.DASHBOARD,
         url: ROUTES.DASHBOARD,
         icon: ICONS.DASHBOARD,
+        roles: [Role.FREE, Role.PRO, Role.ADMIN],
+      },
+      {
+        name: PAGE_NAMES.WEBHOOKS,
+        url: ROUTES.WEBHOOKS,
+        icon: ICONS.WEBHOOKS,
         roles: [Role.FREE, Role.PRO, Role.ADMIN],
       },
     ],

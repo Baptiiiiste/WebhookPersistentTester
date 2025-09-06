@@ -84,5 +84,8 @@
           "Description": "Nombre de requêtes au cours des 7 derniers jours"
         }
     }
+  },
+  "WebhookPage": {
+    "Description": "Gestion des webhooks"
   }
 }
