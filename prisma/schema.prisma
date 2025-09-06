@@ -21,6 +21,7 @@ model User {
 
 model Webhook {
   id          Int          @id @default(autoincrement())
+  name        String
   url         String
   requestLogs RequestLog[]
   userId      Int

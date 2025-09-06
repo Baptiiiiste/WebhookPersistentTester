@@ -16,7 +16,8 @@ async function main() {
     // 5 webhooks
     const webhook = await prisma.webhook.create({
       data: {
-        url: faker.internet.url(),
+        name: faker.lorem.words(1),
+        url: faker.string.uuid(),
         userId: user.id,
       },
     })
