@@ -18,7 +18,7 @@ export async function WebhooksAmountProgression() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t("MaxWebhooks")}</CardTitle>
+        <CardTitle>{t('MaxWebhooks')}</CardTitle>
       </CardHeader>
       <CardContent className="flex gap-4 items-center">
         <Progress value={percentage} className="h-3" />

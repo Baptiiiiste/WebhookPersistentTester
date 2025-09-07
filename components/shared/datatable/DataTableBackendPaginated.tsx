@@ -16,18 +16,17 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import React from 'react'
+import { useTranslations } from 'next-intl'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
-  noResultText?: string
   onClick?: (row: TData) => void
 }
 
 export function DataTableBackendPaginated<TData, TValue>({
   columns,
   data,
-  noResultText = 'Aucun résultat',
   onClick,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
@@ -35,6 +34,7 @@ export function DataTableBackendPaginated<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
+  const t = useTranslations('Datatable')
 
   return (
     <div className="rounded-md border">
@@ -78,7 +78,7 @@ export function DataTableBackendPaginated<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                {noResultText}
+                {t('NoData')}
               </TableCell>
             </TableRow>
           )}

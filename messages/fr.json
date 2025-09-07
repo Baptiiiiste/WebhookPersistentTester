@@ -10,7 +10,8 @@
   "Datatable" : {
     "LinesPerPage": "Lignes par page",
     "Amount": "{count, plural, one {# élément} other {# éléments}}",
-    "PageNumber": "Page {page} sur {pages}"
+    "PageNumber": "Page {page} sur {pages}",
+    "NoData": "Aucun résultat"
   },
   "DeleteConfirmationModal": {
     "Confirmation": "Confirmation",
