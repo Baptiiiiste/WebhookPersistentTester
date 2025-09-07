@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import type { PropsWithChildren } from 'react'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface Props extends PropsWithChildren {
   deleteId: number
@@ -27,6 +28,7 @@ export function DeleteConfirmationModal({
   children,
 }: Props) {
   const [error, setError] = useState<string>('')
+  const t = useTranslations('DeleteConfirmationModal')
 
   const handleAction = async () => {
     try {
@@ -34,9 +36,8 @@ export function DeleteConfirmationModal({
       if (result?.message) {
         setError(result.message)
       }
-    } catch (e) {
-      console.error(e)
-      setError('Une erreur est survenue')
+    } catch {
+      setError(t('Error'))
     }
   }
 
@@ -46,7 +47,7 @@ export function DeleteConfirmationModal({
         <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Confirmation</AlertDialogTitle>
+            <AlertDialogTitle>{t('Confirmation')}</AlertDialogTitle>
             <AlertDialogDescription>{description}</AlertDialogDescription>
             {error && (
               <AlertDialogDescription className="text-red-500">
@@ -61,11 +62,11 @@ export function DeleteConfirmationModal({
                 variant="secondary"
                 onClick={() => setError('')}
               >
-                Annuler
+                {t('Cancel')}
               </Button>
             </AlertDialogCancel>
             <Button onClick={handleAction} variant="destructive">
-              Confirmer
+              {t('Confirm')}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -12,6 +12,12 @@
     "Amount": "{count, plural, one {# élément} other {# éléments}}",
     "PageNumber": "Page {page} sur {pages}"
   },
+  "DeleteConfirmationModal": {
+    "Confirmation": "Confirmation",
+    "Cancel": "Annuler",
+    "Confirm": "Confirmer",
+    "Error": "Une erreur est survenue"
+  },
   "Auth": {
     "SignInPage": {
       "Title": "Vous revoilà",
