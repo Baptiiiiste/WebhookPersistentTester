@@ -7,6 +7,11 @@
       "Upgrade": "Améliorer"
     }
   },
+  "Datatable" : {
+    "LinesPerPage": "Lignes par page",
+    "Amount": "{count, plural, one {# élément} other {# éléments}}",
+    "PageNumber": "Page {page} sur {pages}"
+  },
   "Auth": {
     "SignInPage": {
       "Title": "Vous revoilà",
@@ -86,6 +91,10 @@
     }
   },
   "WebhookPage": {
-    "Description": "Gestion des webhooks"
+    "Description": "Gestion des webhooks",
+    "Datatable" : {
+      "Name": "Nom",
+      "URL": "URL"
+    }
   }
 }

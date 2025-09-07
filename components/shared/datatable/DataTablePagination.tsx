@@ -11,7 +11,13 @@ import {
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ICONS } from '@/constants/icons'
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+} from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   page: number
@@ -38,6 +44,7 @@ export function DataTablePagination({
 }: Props) {
   const params = useSearchParams()
   const router = useRouter()
+  const t = useTranslations('Datatable')
 
   const previousPage = page <= 0 ? 0 : page - 1
   const lastPage =
@@ -52,11 +59,11 @@ export function DataTablePagination({
   return (
     <div className="flex items-center justify-between">
       <p className="text-sm font-medium">
-        {totalItems} élément{totalItems > 1 ? 's' : ''}
+        {t('Amount', { count: totalItems })}
       </p>
       <div className="flex items-center space-x-6 px-2 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Lignes par page</p>
+          <p className="text-sm font-medium">{t('LinesPerPage')}</p>
           <Select
             value={pageSize.toString()}
             onValueChange={(value) => {
@@ -79,7 +86,7 @@ export function DataTablePagination({
           </Select>
         </div>
         <p className="text-sm font-medium">
-          Page {page + 1} sur {lastPage + 1}
+          {t('PageNumber', { page: page + 1, pages: lastPage + 1 })}
         </p>
         <div className="flex items-center space-x-2">
           <Button
@@ -89,7 +96,7 @@ export function DataTablePagination({
             asChild
           >
             <Link href={getParams(params, 'page', '0')}>
-              <ICONS.DATATABLE_FIRSTPAGE className="size-4" />
+              <ChevronsLeftIcon className="size-4" />
             </Link>
           </Button>
           <Button
@@ -99,7 +106,7 @@ export function DataTablePagination({
             asChild
           >
             <Link href={getParams(params, 'page', previousPage.toString())}>
-              <ICONS.DATATABLE_PREVPAGE className="size-4" />
+              <ChevronLeftIcon className="size-4" />
             </Link>
           </Button>
           <Button
@@ -109,7 +116,7 @@ export function DataTablePagination({
             asChild
           >
             <Link href={getParams(params, 'page', nextPage.toString())}>
-              <ICONS.DATATABLE_NEXTPAGE className="size-4" />
+              <ChevronRightIcon className="size-4" />
             </Link>
           </Button>
           <Button
@@ -119,7 +126,7 @@ export function DataTablePagination({
             asChild
           >
             <Link href={getParams(params, 'page', lastPage.toString())}>
-              <ICONS.DATATABLE_LASTPAGE className="size-4" />
+              <ChevronsRightIcon className="size-4" />
             </Link>
           </Button>
         </div>

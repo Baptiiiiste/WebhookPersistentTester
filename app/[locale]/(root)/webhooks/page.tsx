@@ -2,9 +2,23 @@ import { PageLayout } from '@/components/shared/PageLayout'
 import { PAGE_NAMES } from '@/constants/pages'
 import { ICONS } from '@/constants/icons'
 import { getTranslations } from 'next-intl/server'
+import { WebhooksDataTableWrapper } from '@/components/pages/(root)/Webhooks/WebhooksDatatableWrapper'
+import { getAllWebhooksForLoggedUserActions } from '@/lib/actions/webhook/getAllWebhooksForLoggedUser.actions'
+import { getSearchParamNumber } from '@/lib/utils/searchParams'
 
-export default async function WebhooksPage() {
+type Props = {
+  searchParams: Promise<{ page: string; size: string }>
+}
+
+export default async function WebhooksPage({ searchParams }: Props) {
   const t = await getTranslations('WebhookPage')
+  const { page, size } = await searchParams
+  const pageIndex = getSearchParamNumber(page, 0)
+  const pageSize = getSearchParamNumber(size, 20)
+  const webhooks = await getAllWebhooksForLoggedUserActions({
+    pageIndex,
+    pageSize,
+  })
 
   return (
     <PageLayout.Root>
@@ -14,7 +28,14 @@ export default async function WebhooksPage() {
 
       <PageLayout.Description>{t('Description')}</PageLayout.Description>
 
-      <PageLayout.Content>TODO</PageLayout.Content>
+      <PageLayout.Content>
+        <WebhooksDataTableWrapper
+          data={webhooks.items}
+          page={pageIndex}
+          pageSize={pageSize}
+          totalItems={webhooks.total}
+        />
+      </PageLayout.Content>
     </PageLayout.Root>
   )
 }
