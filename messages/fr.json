@@ -98,6 +98,7 @@
   },
   "WebhookPage": {
     "Description": "Gestion des webhooks",
+    "MaxWebhooks": "Nombre de webhooks pour votre plan",
     "Datatable" : {
       "Name": "Nom",
       "URL": "URL",

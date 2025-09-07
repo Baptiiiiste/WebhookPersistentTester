@@ -6,6 +6,7 @@ import { WebhooksDataTableWrapper } from '@/components/pages/(root)/Webhooks/Web
 import { getAllWebhooksForLoggedUserActions } from '@/lib/actions/webhook/getAllWebhooksForLoggedUser.actions'
 import { getSearchParamNumber } from '@/lib/utils/searchParams'
 import { deleteWebhookByIdActions } from '@/lib/actions/webhook/delete.actions'
+import { WebhooksAmountProgression } from '@/components/pages/(root)/Webhooks/WebhooksAmountProgression'
 
 type Props = {
   searchParams: Promise<{ page: string; size: string }>
@@ -34,7 +35,9 @@ export default async function WebhooksPage({ searchParams }: Props) {
 
       <PageLayout.Description>{t('Description')}</PageLayout.Description>
 
-      <PageLayout.Content>
+      <PageLayout.Content className="flex flex-col gap-6">
+        <WebhooksAmountProgression />
+
         <WebhooksDataTableWrapper
           data={webhooks.items}
           page={pageIndex}
