@@ -16,7 +16,7 @@ export default async function DashboardPage() {
   const tConfig = await getTranslations('Configuration')
   const loggedUser = await getLoggedUserAction()
   const webhooks = await getAllWebhooksForLoggedUserActions()
-  const requestLogs = webhooks.flatMap((w) => w.requestLogs)
+  const requestLogs = webhooks.items.flatMap((w) => w.requestLogs)
 
   return (
     <PageLayout.Root className="h-screen">
@@ -46,7 +46,7 @@ export default async function DashboardPage() {
             description={t('InfoCard.WebhooksCount.Description')}
             content={
               <div className="flex gap-4 items-end justify-between">
-                <span className="font-bold text-2xl">{webhooks.length}</span>
+                <span className="font-bold text-2xl">{webhooks.total}</span>
                 <span className="text-gray-500">
                   /{PLANS[loggedUser!.role].maxWebhooks}
                 </span>
@@ -76,7 +76,7 @@ export default async function DashboardPage() {
 
         <div className="grid gap-6 md:grid-cols-1 xl:grid-cols-3 flex-1 mt-6">
           <div className="lg:col-span-1">
-            <DashboardWebhooksCard webhooks={webhooks} />
+            <DashboardWebhooksCard webhooks={webhooks.items} />
           </div>
           <div className="lg:col-span-2">
             <DashbordRequestChartCard requestLogs={requestLogs} />

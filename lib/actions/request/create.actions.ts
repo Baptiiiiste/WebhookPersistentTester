@@ -22,8 +22,8 @@ export async function createRequestLogAction(data: Data) {
   const user = await getUserByIdService(webhook.userId)
   if (!user) return 404
 
-  const webhooks = await getAllWebhooksByUserIdService(user.id)
-  const requestLogsCount = webhooks.flatMap(
+  const webhooks = await getAllWebhooksByUserIdService({ userId: user.id })
+  const requestLogsCount = webhooks.items.flatMap(
     (webhook) => webhook.requestLogs,
   ).length
 
