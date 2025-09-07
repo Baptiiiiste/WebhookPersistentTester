@@ -31,13 +31,9 @@ export function DeleteConfirmationModal({
   const t = useTranslations('DeleteConfirmationModal')
 
   const handleAction = async () => {
-    try {
-      const result = await action(deleteId)
-      if (result?.message) {
-        setError(result.message)
-      }
-    } catch {
-      setError(t('Error'))
+    const result = await action(deleteId)
+    if (result?.message) {
+      setError(result.message)
     }
   }
 
@@ -60,7 +56,10 @@ export function DeleteConfirmationModal({
               <Button
                 type="button"
                 variant="secondary"
-                onClick={() => setError('')}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setError('')
+                }}
               >
                 {t('Cancel')}
               </Button>

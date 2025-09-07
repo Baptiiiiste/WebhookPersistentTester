@@ -33,17 +33,16 @@ model Webhook {
 model RequestLog {
   id        Int     @id @default(autoincrement())
   webhookId Int
-  webhook   Webhook @relation(fields: [webhookId], references: [id])
+  webhook   Webhook @relation(fields: [webhookId], references: [id], onDelete: Cascade)
 
   method      String
   origin      String?
   headers     Json
   queryParams Json?
   body        Json?
-
-  ip        String?
-  userAgent String?
-  createdAt DateTime @default(now())
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
 }
 
 enum AuthProvider {

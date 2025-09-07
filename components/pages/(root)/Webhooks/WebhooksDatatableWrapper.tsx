@@ -7,6 +7,9 @@ import { DataTablePagination } from '@/components/shared/datatable/DataTablePagi
 import { ROUTES } from '@/constants/routes'
 import type { RequestLog, Webhook } from '@prisma/client'
 import { useTranslations } from 'next-intl'
+import { Trash2 } from 'lucide-react'
+import { DeleteConfirmationModal } from '@/components/shared/DeleteConfirmationModal'
+import { Button } from '@/components/ui/button'
 
 type Data = Webhook & { requestLogs: RequestLog[] }
 
@@ -15,6 +18,9 @@ type Props = {
   page: number
   pageSize: number
   totalItems: number
+  deleteWebhookAction: (
+    id: number,
+  ) => Promise<{ error: string; message: string } | undefined>
 }
 
 export function WebhooksDataTableWrapper({
@@ -22,6 +28,7 @@ export function WebhooksDataTableWrapper({
   page,
   pageSize,
   totalItems,
+  deleteWebhookAction,
 }: Props) {
   const router = useRouter()
   const t = useTranslations('WebhookPage.Datatable')
@@ -34,6 +41,32 @@ export function WebhooksDataTableWrapper({
     {
       accessorKey: 'url',
       header: t('URL'),
+    },
+    {
+      id: 'requestsCount',
+      header: t('RequestsCount'),
+      accessorFn: (row) => row.requestLogs.length,
+    },
+    {
+      id: 'actions',
+      header: '',
+      cell: ({ row }) => (
+        <div className="flex gap-2 justify-end">
+          <DeleteConfirmationModal
+            deleteId={row.original.id}
+            action={deleteWebhookAction}
+            description={t('DeleteMessage')}
+          >
+            <Button
+              variant="destructive"
+              size="icon"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Trash2 className="size-4" />
+            </Button>
+          </DeleteConfirmationModal>
+        </div>
+      ),
     },
   ]
 

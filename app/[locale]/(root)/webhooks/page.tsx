@@ -5,6 +5,7 @@ import { getTranslations } from 'next-intl/server'
 import { WebhooksDataTableWrapper } from '@/components/pages/(root)/Webhooks/WebhooksDatatableWrapper'
 import { getAllWebhooksForLoggedUserActions } from '@/lib/actions/webhook/getAllWebhooksForLoggedUser.actions'
 import { getSearchParamNumber } from '@/lib/utils/searchParams'
+import { deleteWebhookByIdActions } from '@/lib/actions/webhook/delete.actions'
 
 type Props = {
   searchParams: Promise<{ page: string; size: string }>
@@ -20,6 +21,11 @@ export default async function WebhooksPage({ searchParams }: Props) {
     pageSize,
   })
 
+  const handleDelete = async (id: number) => {
+    'use server'
+    return deleteWebhookByIdActions(id)
+  }
+
   return (
     <PageLayout.Root>
       <PageLayout.Icon icon={ICONS.WEBHOOKS} color="#F22222" />
@@ -34,6 +40,7 @@ export default async function WebhooksPage({ searchParams }: Props) {
           page={pageIndex}
           pageSize={pageSize}
           totalItems={webhooks.total}
+          deleteWebhookAction={handleDelete}
         />
       </PageLayout.Content>
     </PageLayout.Root>

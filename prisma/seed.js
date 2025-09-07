@@ -38,17 +38,13 @@ async function main() {
           },
           queryParams: { foo: faker.word.sample() },
           body: { data: faker.lorem.paragraph() },
-          responseBody: { message: faker.lorem.sentence() },
           ip: faker.internet.ip(),
           userAgent: faker.internet.userAgent(),
         },
       })
     }
   }
-
-  console.log(
-    '✅ Seed completed: webhooks and request created for first user.',
-  )
+  console.log('✅ Seed completed: webhooks and request created for first user.')
 }
 
 main()

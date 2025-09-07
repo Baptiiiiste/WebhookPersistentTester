@@ -100,7 +100,14 @@
     "Description": "Gestion des webhooks",
     "Datatable" : {
       "Name": "Nom",
-      "URL": "URL"
+      "URL": "URL",
+      "RequestsCount": "Nombre de requêtes",
+      "DeleteMessage": "Êtes-vous sûr de vouloir supprimer ce webhook ? Cette action est irréversible et supprimera toutes les requêtes liées."
+    },
+    "Errors": {
+      "404": "Le webhook n'a pas été trouvé" ,
+      "400": "Impossible de supprimer le webhook, il est utilisé ailleurs",
+      "UNKNOWN": "Une erreur est survenue"
     }
   }
 }
