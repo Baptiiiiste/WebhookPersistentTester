@@ -111,5 +111,8 @@
       "400": "Impossible de supprimer le webhook, il est utilisé ailleurs",
       "UNKNOWN": "Une erreur est survenue"
     }
+  },
+  "AdminPage": {
+    "Description": "Gestion des données & statistiques"
   }
 }
