@@ -61,7 +61,7 @@ export function NavGroup({
                   disabled={isDisabled}
                 >
                   <Link
-                    href={isDisabled ? '#' : item.url}
+                    href={isDisabled ? '#' : '/' + item.url}
                     className={clsx('flex items-center gap-2', {
                       'pointer-events-none opacity-50': isDisabled,
                     })}

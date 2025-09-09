@@ -7,6 +7,8 @@ import { PUBLIC_ROUTES, ROUTES } from '@/constants/routes'
 
 const intlMiddleware = createIntlMiddleware(routing)
 
+// TODO: Verify on access /webhoks/{url} if the webhook belongs to the user, otherwise redirect to 404 or /webhooks
+
 export async function middleware(request: NextRequest) {
   const intlResponse = intlMiddleware(request)
   if (intlResponse) {
