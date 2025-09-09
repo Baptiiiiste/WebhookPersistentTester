@@ -100,6 +100,10 @@
   "WebhookPage": {
     "Description": "Gestion des webhooks",
     "MaxWebhooks": "Nombre de webhooks pour votre plan",
+    "Usage" : {
+      "Title": "Comment utiliser le webhook ?",
+      "Description": "Copiez l'url de votre webhook ci-dessous et utilisez-la dans votre application pour y envoyer des requêtes. Chaque requête envoyée sera enregistrée et affichée dans le tableau ci-dessous."
+    },
     "Datatable" : {
       "Name": "Nom",
       "URL": "URL",

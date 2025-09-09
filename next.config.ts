@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     },
   },
   env: {
+    APP_URL: process.env.APP_URL,
+    API_URL: process.env.API_URL,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     SALT_ROUNDS: process.env.SALT_ROUNDS,
