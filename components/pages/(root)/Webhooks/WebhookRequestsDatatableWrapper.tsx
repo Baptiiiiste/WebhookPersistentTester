@@ -29,9 +29,17 @@ export function WebhookRequestsDataTableWrapper({
 
   const columns: ColumnDef<Data>[] = [
     {
-      accessorKey: 'body',
-      header: 'body',
+      accessorKey: 'method',
+      header: 'method',
     },
+    {
+      accessorKey: 'origin',
+      header: 'origin',
+    },
+    {
+      accessorKey: 'ip',
+      header: 'ip',
+    }
     // {
     //   id: 'actions',
     //   header: '',
