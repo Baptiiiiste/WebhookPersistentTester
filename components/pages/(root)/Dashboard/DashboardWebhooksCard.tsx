@@ -5,13 +5,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { RequestLog, Webhook } from '@prisma/client'
+import type { RequestLog, Webhook } from '@prisma/client'
 import { getTranslations } from 'next-intl/server'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { LinkIcon } from 'lucide-react'
+import { Link } from '@/lib/i18n/navigation'
 
 type Props = {
-  webhooks: (Webhook & {requestLogs: RequestLog[]})[]
+  webhooks: (Webhook & { requestLogs: RequestLog[] })[]
 }
 
 export async function DashboardWebhooksCard({ webhooks }: Props) {
@@ -25,20 +26,21 @@ export async function DashboardWebhooksCard({ webhooks }: Props) {
       </CardHeader>
       <CardContent className="flex-1 min-h-0 p-0">
         <ScrollArea className="h-full px-6 pb-6">
-          <div className="space-y-2">
+          <div>
             {webhooks.map((webhook) => (
-              <Card
-                key={webhook.id}
-                className="hover:bg-muted/50 transition-all duration-200 hover:shadow-sm"
-              >
-                <CardContent>
-                  <div className="font-medium mb-1 text-sm">{webhook.name}</div>
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <LinkIcon className="w-3 h-3" />
-                    <span className="truncate">{webhook.url}</span>
-                  </div>
-                </CardContent>
-              </Card>
+              <Link href={`/webhooks/${webhook.url}`} key={webhook.id}>
+                <Card className="hover:bg-muted/50 transition-all duration-200 hover:shadow-sm mb-2">
+                  <CardContent>
+                    <div className="font-medium mb-1 text-sm">
+                      {webhook.name}
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <LinkIcon className="w-3 h-3" />
+                      <span className="truncate">{webhook.url}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </ScrollArea>
