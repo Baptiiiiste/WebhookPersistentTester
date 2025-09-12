@@ -7,6 +7,10 @@
       "Upgrade": "Améliorer"
     }
   },
+  "CopyButton": {
+    "Copy": "Copier",
+    "Copied": "Copié"
+  },
   "Datatable" : {
     "LinesPerPage": "Lignes par page",
     "Amount": "{count, plural, one {# élément} other {# éléments}}",
@@ -119,5 +123,18 @@
   },
   "AdminPage": {
     "Description": "Gestion des données & statistiques"
+  },
+  "RequestDetailSheet": {
+    "Title": "Détails de la requête #{requestId}",
+    "GlobalInfo": {
+      "Title": "Informations générales",
+      "Ip": "Addresse IP",
+      "Size": "Taille du contenu",
+      "UserAgent": "User-Agent",
+      "Origin": "Origine"
+    },
+    "Headers": "Headers",
+    "Body": "Body",
+    "QueryParams": "Query Params"
   }
 }

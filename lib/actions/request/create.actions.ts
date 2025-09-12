@@ -13,6 +13,7 @@ type Data = {
   body: string | null
   ip: string | null
   userAgent: string | null
+  contentLength: number | null
 }
 
 export async function createRequestLogAction(data: Data) {

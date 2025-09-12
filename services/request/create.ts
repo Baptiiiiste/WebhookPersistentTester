@@ -10,6 +10,7 @@ type Data = {
   body: string | null
   ip: string | null
   userAgent: string | null
+  contentLength: number | null
 }
 
 export async function createRequestLogService(data: Data) {
@@ -23,6 +24,7 @@ export async function createRequestLogService(data: Data) {
       body: data.body ? JSON.parse(data.body) : null,
       ip: data.ip,
       userAgent: data.userAgent,
+      contentLength: data.contentLength,
     },
   })
 }

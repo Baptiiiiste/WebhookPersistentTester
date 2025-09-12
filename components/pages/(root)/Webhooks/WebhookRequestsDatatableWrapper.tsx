@@ -4,6 +4,9 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { DataTableBackendPaginated } from '@/components/shared/datatable/DataTableBackendPaginated'
 import { DataTablePagination } from '@/components/shared/datatable/DataTablePagination'
 import type { RequestLog } from '@prisma/client'
+import { RequestLogSheet } from '@/components/pages/(root)/Webhooks/RequestLogSheet'
+import { Search } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 type Data = RequestLog
 
@@ -39,40 +42,38 @@ export function WebhookRequestsDataTableWrapper({
     {
       accessorKey: 'ip',
       header: 'ip',
-    }
-    // {
-    //   id: 'actions',
-    //   header: '',
-    //   cell: ({ row }) => (
-    //     <div className="flex gap-2 justify-end">
-    //       <DeleteConfirmationModal
-    //         deleteId={row.original.id}
-    //         action={deleteWebhookAction}
-    //         description={t('DeleteMessage')}
-    //       >
-    //         <Button
-    //           variant="destructive"
-    //           size="icon"
-    //           onClick={(e) => e.stopPropagation()}
-    //         >
-    //           <Trash2 className="size-4" />
-    //         </Button>
-    //       </DeleteConfirmationModal>
-    //     </div>
-    //   ),
-    // },
+    },
+    {
+      id: 'actions',
+      header: '',
+      cell: ({ row }) => (
+        <div className="flex gap-2 justify-end">
+          <RequestLogSheet request={row.original}>
+            <Button variant="outline" size="icon">
+              <Search/>
+            </Button>
+          </RequestLogSheet>
+          {/*<DeleteConfirmationModal*/}
+          {/*  deleteId={row.original.id}*/}
+          {/*  action={deleteWebhookAction}*/}
+          {/*  description={t('DeleteMessage')}*/}
+          {/*>*/}
+          {/*  <Button*/}
+          {/*    variant="destructive"*/}
+          {/*    size="icon"*/}
+          {/*    onClick={(e) => e.stopPropagation()}*/}
+          {/*  >*/}
+          {/*    <Trash2 className="size-4" />*/}
+          {/*  </Button>*/}
+          {/*</DeleteConfirmationModal>*/}
+        </div>
+      ),
+    },
   ]
-
-  // const onClick = (row: RequestLog) => {
-  // }
 
   return (
     <div className="flex flex-col gap-4">
-      <DataTableBackendPaginated
-        columns={columns}
-        data={data}
-        // onClick={onClick}
-      />
+      <DataTableBackendPaginated columns={columns} data={data} />
       <DataTablePagination
         page={page}
         pageSize={pageSize}
