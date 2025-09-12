@@ -11,12 +11,21 @@ async function handleRequest(req: NextRequest, uuid: string) {
   const queryParams = Object.fromEntries(searchParams.entries())
 
   let body = null
+  let contentLength = 0
+
   try {
     if (method !== 'GET' && method !== 'HEAD') {
-      body = await req.json().catch(() => null)
+      const rawBody = await req.arrayBuffer()
+      contentLength = rawBody.byteLength
+      try {
+        body = JSON.parse(new TextDecoder().decode(rawBody))
+      } catch {
+        body = null
+      }
     }
   } catch {
     body = null
+    contentLength = 0
   }
 
   const ip =
@@ -34,6 +43,7 @@ async function handleRequest(req: NextRequest, uuid: string) {
     body: body ? JSON.stringify(body) : null,
     ip,
     userAgent,
+    contentLength,
   })
 
   return new NextResponse(undefined, { status })

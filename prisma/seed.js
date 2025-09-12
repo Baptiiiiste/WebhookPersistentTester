@@ -39,6 +39,7 @@ async function main() {
           queryParams: { foo: faker.word.sample() },
           body: { data: faker.lorem.paragraph() },
           ip: faker.internet.ip(),
+          contentLength: faker.number.int({ min: 800, max: 5000 }),
           userAgent: faker.internet.userAgent(),
         },
       })
