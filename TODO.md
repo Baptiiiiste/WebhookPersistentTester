@@ -23,5 +23,8 @@
 - Add custom notes to a request
 - Download a request into a json file
 - Manually replay a request to a chosen endpoint
+- Generate a shareable link of a request
 - Auto replay a request to a chosen endpoint
+- Replay a request with a modified body
+- A webhook mock server (it simulates answers)
 - Add an email to each webhook
