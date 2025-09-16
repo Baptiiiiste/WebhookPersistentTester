@@ -1,1 +1,1 @@
-export const SITENAME = 'Webhook Persistent Tester'
+export const SITENAME = 'WPT'

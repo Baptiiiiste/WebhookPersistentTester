@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from 'react'
-import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 
 import {
   Sidebar,
@@ -13,32 +12,14 @@ import {
 } from '@/components/ui/sidebar'
 import { NavGroup } from '@/components/shared/sidebar/NavGroup'
 import { NavUser } from '@/components/shared/sidebar/NavUser'
-import { TeamSwitcher } from '@/components/shared/sidebar/TeamSwitcher'
 import { SIDEBAR_LINKS } from '@/constants/routes'
 import type { Session } from 'next-auth'
 import type { SidebarLinkGroupType } from '@/types/sidebar'
 import { Role } from '@prisma/client'
 import { UpgradePlanButton } from '@/components/shared/button/UpgradePlanButton'
-
-const data = {
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
-}
+import { IMAGES } from '@/constants/images'
+import Image from 'next/image'
+import { SITENAME } from '@/constants/globals'
 
 export function CustomSidebar({
   session,
@@ -48,8 +29,9 @@ export function CustomSidebar({
 
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+      <SidebarHeader className="flex flex-row items-center font-medium">
+        <Image src={IMAGES.LOGO} alt="Logo" width={48} height={48} />
+        {SITENAME}
       </SidebarHeader>
       <SidebarContent>
         {SIDEBAR_LINKS.map((group: SidebarLinkGroupType) => (
