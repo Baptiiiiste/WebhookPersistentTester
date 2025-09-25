@@ -38,7 +38,7 @@ Install dependencies: `pnpm install`\
 Start database: `docker-compose up -d`\
 Generate prisma client: `prisma db generate`\
 Update the models: `prisma db push`\
-Import data (*Optional*): `pnpm run prisma:seed`
+Import data (*Optional*): `pnpm run prisma:seed`\
 Start development server: `pnpm dev`\
 Use it: [http://localhost:3000](http://localhost:3000)
 
