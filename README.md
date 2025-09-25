@@ -41,7 +41,7 @@ Use it : [http://localhost:3000](http://localhost:3000)
 
 ## Contribution
 
-[Click here to access the TODO List](./TODO.md)
+[Click here to access the TODO List](./TODO.md)\
 See the [CONTRIBUTING](./CONTRIBUTING.md) section for details.
 
 ## License
