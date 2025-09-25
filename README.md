@@ -39,9 +39,14 @@ Start database : `docker-compose up -d`\
 Start development server : `pnpm dev`\
 Use it : [http://localhost:3000](http://localhost:3000)
 
+## Contribution
+
+[Click here to access the TODO List](./TODO.md)
+See the [CONTRIBUTING](./CONTRIBUTING.md) section for details.
 
 ## License
 
 This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.  
 See the [LICENSE](./LICENSE) file for details.
+
 
