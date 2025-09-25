@@ -44,7 +44,7 @@ Use it: [http://localhost:3000](http://localhost:3000)
 
 ## Contribution
 
-See the [CONTRIBUTING](./CONTRIBUTING.md) section for details.
+See the [CONTRIBUTING](./CONTRIBUTING.md) section for details.\
 See the [TODO List](./TODO.md) for details.
 
 ## License
