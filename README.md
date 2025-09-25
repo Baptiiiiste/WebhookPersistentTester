@@ -5,6 +5,11 @@
 A fullstack platform to test and replay your webhooks easily with a persistent endpoint\
 Side project that could be a SaaS in the future.
 
+> [!NOTE]  
+> This application is still under development and far from being complete. You can still access the preview [here](https://wpt.baptiiiste.com) \
+> The current version is only an early preview with limited usability, and I strongly advise against storing or using any sensitive information.
+
+
 ## Installation
 
 - Node.js (version 22.14.0 or +): [https://nodejs.org/fr](https://nodejs.org/fr) or use nvm
