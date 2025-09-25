@@ -8,7 +8,7 @@ Side project that could be a SaaS in the future.
 ## Installation
 
 - Node.js (version 22.14.0 or +): [https://nodejs.org/fr](https://nodejs.org/fr) or use nvm
-- pnpm (or +): `npm i pnpm`
+- pnpm: `npm i pnpm`
 
 ## Configuration
 
