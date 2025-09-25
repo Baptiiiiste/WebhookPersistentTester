@@ -34,15 +34,18 @@ DATABASE_URL=postgresql://user:password@localhost:5432/db
 
 ## Usage
 
-Install dependencies : `pnpm install`\
-Start database : `docker-compose up -d`\
-Start development server : `pnpm dev`\
-Use it : [http://localhost:3000](http://localhost:3000)
+Install dependencies: `pnpm install`\
+Start database: `docker-compose up -d`\
+Generate prisma client: `prisma db generate`\
+Update the models: `prisma db push`\
+Import data (*Optional*): `pnpm run prisma:seed`
+Start development server: `pnpm dev`\
+Use it: [http://localhost:3000](http://localhost:3000)
 
 ## Contribution
 
-[Click here to access the TODO List](./TODO.md)\
 See the [CONTRIBUTING](./CONTRIBUTING.md) section for details.
+See the [TODO List](./TODO.md) for details.
 
 ## License
 
