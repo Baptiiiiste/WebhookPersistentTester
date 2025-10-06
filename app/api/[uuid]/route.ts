@@ -2,6 +2,13 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { createRequestLogAction } from '@/lib/actions/request/create.actions'
 
+type RouteCtx = { params: Record<string, string | string[]> }
+
+function getParam(ctx: RouteCtx, key: string): string | null {
+  const v = ctx.params?.[key]
+  return Array.isArray(v) ? (v[0] ?? null) : (v ?? null)
+}
+
 async function handleRequest(req: NextRequest, uuid: string) {
   const method = req.method
   const origin = req.headers.get('referer') || req.headers.get('origin') || null
@@ -10,7 +17,7 @@ async function handleRequest(req: NextRequest, uuid: string) {
   const { searchParams } = new URL(req.url)
   const queryParams = Object.fromEntries(searchParams.entries())
 
-  let body = null
+  let body: unknown = null
   let contentLength = 0
 
   try {
@@ -49,52 +56,16 @@ async function handleRequest(req: NextRequest, uuid: string) {
   return new NextResponse(undefined, { status })
 }
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
+async function methodHandler(req: NextRequest, ctx: RouteCtx) {
+  const uuid = getParam(ctx, 'uuid')
+  if (!uuid) return new NextResponse('Missing uuid', { status: 400 })
   return handleRequest(req, uuid)
 }
-export async function POST(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
-}
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
-}
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
-}
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
-}
-export async function OPTIONS(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
-}
-export async function HEAD(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
-}
+
+export const GET = methodHandler
+export const POST = methodHandler
+export const PUT = methodHandler
+export const PATCH = methodHandler
+export const DELETE = methodHandler
+export const OPTIONS = methodHandler
+export const HEAD = methodHandler
