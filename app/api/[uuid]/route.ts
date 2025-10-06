@@ -1,43 +1,39 @@
-import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { createRequestLogAction } from '@/lib/actions/request/create.actions'
 
-type RouteCtx = { params: Record<string, string | string[]> }
-
-function getParam(ctx: RouteCtx, key: string): string | null {
-  const v = ctx.params?.[key]
-  return Array.isArray(v) ? (v[0] ?? null) : (v ?? null)
-}
-
-async function handleRequest(req: NextRequest, uuid: string) {
+async function handleRequest(req: Request, uuid: string) {
   const method = req.method
-  const origin = req.headers.get('referer') || req.headers.get('origin') || null
-  const headers = Object.fromEntries(req.headers.entries())
+  const origin = req.headers.get('referer') ?? req.headers.get('origin') ?? null
 
+  const headers: Record<string, string> = Object.fromEntries(
+    req.headers.entries(),
+  )
   const { searchParams } = new URL(req.url)
-  const queryParams = Object.fromEntries(searchParams.entries())
+  const queryParams: Record<string, string> = Object.fromEntries(
+    searchParams.entries(),
+  )
 
   let body: unknown = null
   let contentLength = 0
-
-  try {
-    if (method !== 'GET' && method !== 'HEAD') {
-      const rawBody = await req.arrayBuffer()
-      contentLength = rawBody.byteLength
+  if (method !== 'GET' && method !== 'HEAD') {
+    try {
+      const raw = await req.arrayBuffer()
+      contentLength = raw.byteLength
+      const text = new TextDecoder().decode(raw)
       try {
-        body = JSON.parse(new TextDecoder().decode(rawBody))
+        body = JSON.parse(text)
       } catch {
         body = null
       }
+    } catch {
+      body = null
+      contentLength = 0
     }
-  } catch {
-    body = null
-    contentLength = 0
   }
 
   const ip =
-    headers['x-forwarded-for']?.split(',')[0] || headers['x-real-ip'] || null
-  const userAgent = headers['user-agent'] || null
+    headers['x-forwarded-for']?.split(',')[0] ?? headers['x-real-ip'] ?? null
+  const userAgent = headers['user-agent'] ?? null
 
   const status = await createRequestLogAction({
     uuid,
@@ -56,16 +52,61 @@ async function handleRequest(req: NextRequest, uuid: string) {
   return new NextResponse(undefined, { status })
 }
 
-async function methodHandler(req: NextRequest, ctx: RouteCtx) {
-  const uuid = getParam(ctx, 'uuid')
-  if (!uuid) return new NextResponse('Missing uuid', { status: 400 })
+// ⬇️ Laisse Next typer le 2e arg ; on supprime toute annotation et on narrow à l'intérieur
+//    (pas de `any`, et l'annotation est juste une directive de vérif)
+export function GET(
+  req: Request,
+  // @ts-expect-error: Next injecte le type exact du contexte pour cette route
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
   return handleRequest(req, uuid)
 }
-
-export const GET = methodHandler
-export const POST = methodHandler
-export const PUT = methodHandler
-export const PATCH = methodHandler
-export const DELETE = methodHandler
-export const OPTIONS = methodHandler
-export const HEAD = methodHandler
+export function POST(
+  req: Request,
+  // @ts-expect-error: contexte typé par Next
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
+  return handleRequest(req, uuid)
+}
+export function PUT(
+  req: Request,
+  // @ts-expect-error: contexte typé par Next
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
+  return handleRequest(req, uuid)
+}
+export function PATCH(
+  req: Request,
+  // @ts-expect-error: contexte typé par Next
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
+  return handleRequest(req, uuid)
+}
+export function DELETE(
+  req: Request,
+  // @ts-expect-error: contexte typé par Next
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
+  return handleRequest(req, uuid)
+}
+export function OPTIONS(
+  req: Request,
+  // @ts-expect-error: contexte typé par Next
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
+  return handleRequest(req, uuid)
+}
+export function HEAD(
+  req: Request,
+  // @ts-expect-error: contexte typé par Next
+  { params },
+) {
+  const { uuid } = params as { uuid: string }
+  return handleRequest(req, uuid)
+}
