@@ -50,7 +50,7 @@ export function WebhookRequestsDataTableWrapper({
         <div className="flex gap-2 justify-end">
           <RequestLogSheet request={row.original}>
             <Button variant="outline" size="icon">
-              <Search/>
+              <Search />
             </Button>
           </RequestLogSheet>
           {/*<DeleteConfirmationModal*/}
