@@ -6,9 +6,9 @@ RUN npm i -g pnpm
 COPY package.json pnpm-lock.yaml ./
 COPY prisma ./prisma
 RUN pnpm install --frozen-lockfile
+RUN npx prisma generate
 
 COPY . .
-RUN npx prisma generate
 RUN pnpm build
 
 # ===== Runner =====
@@ -16,25 +16,29 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1
 
-# 1) fichiers app
+# Installer bash
+RUN apk add --no-cache bash
+
+# 1) Copier les fichiers de l'app
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
 
-# 2) dépendances runtime
-RUN npm i -g pnpm
-RUN pnpm install --prod --frozen-lockfile
-
-# 3) Prisma (pour migrate deploy)
+# 2) Copier le schema Prisma
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
-# 4) Entrypoint
+# 3) Installer les dépendances
+RUN npm i -g pnpm
+RUN pnpm install --frozen-lockfile
+
+# 4) Générer le client Prisma
+RUN npx prisma generate
+
+# 5) Entrypoint
 COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
 
 EXPOSE 3000
-CMD ["pnpm","start"]
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["pnpm", "start"]
