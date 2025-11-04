@@ -15,7 +15,8 @@
     "LinesPerPage": "Lignes par page",
     "Amount": "{count, plural, one {# élément} other {# éléments}}",
     "PageNumber": "Page {page} sur {pages}",
-    "NoData": "Aucun résultat"
+    "NoData": "Aucun résultat",
+    "NA": "N/A"
   },
   "DeleteConfirmationModal": {
     "Confirmation": "Confirmation",
@@ -119,6 +120,13 @@
       "404": "Le webhook n'a pas été trouvé" ,
       "400": "Impossible de supprimer le webhook, il est utilisé ailleurs",
       "UNKNOWN": "Une erreur est survenue"
+    },
+    "WebhookDetail": {
+      "Datatable": {
+        "Method": "Méthode",
+        "Origin": "Origine",
+        "Ip": "Adresse IP"
+      }
     }
   },
   "AdminPage": {

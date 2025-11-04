@@ -7,6 +7,7 @@ import type { RequestLog } from '@prisma/client'
 import { RequestLogSheet } from '@/components/pages/(root)/Webhooks/RequestLogSheet'
 import { Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 type Data = RequestLog
 
@@ -28,20 +29,30 @@ export function WebhookRequestsDataTableWrapper({
   // deleteWebhookAction,
 }: Props) {
   // const router = useRouter()
-  // const t = useTranslations('WebhookPage.Datatable')
+  const t = useTranslations('WebhookPage.WebhookDetail.Datatable')
+  const tCommon = useTranslations('Datatable')
 
   const columns: ColumnDef<Data>[] = [
     {
       accessorKey: 'method',
-      header: 'method',
+      header: t('Method'),
+      cell: ({ row }) => (
+        row.original.method ?? tCommon('NA')
+      ),
     },
     {
       accessorKey: 'origin',
-      header: 'origin',
+      header: t('Origin'),
+      cell: ({ row }) => (
+        row.original.origin ?? tCommon('NA')
+      ),
     },
     {
       accessorKey: 'ip',
-      header: 'ip',
+      header: t('Ip'),
+      cell: ({ row }) => (
+        row.original.ip ?? tCommon('NA')
+      ),
     },
     {
       id: 'actions',
