@@ -125,7 +125,8 @@
       "Datatable": {
         "Method": "Méthode",
         "Origin": "Origine",
-        "Ip": "Adresse IP"
+        "Ip": "Adresse IP",
+        "DeleteMessage": "Êtes-vous sûr de vouloir supprimer cette requête ? Cette action est irréversible."
       }
     }
   },

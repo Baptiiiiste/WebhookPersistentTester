@@ -5,9 +5,10 @@ import { DataTableBackendPaginated } from '@/components/shared/datatable/DataTab
 import { DataTablePagination } from '@/components/shared/datatable/DataTablePagination'
 import type { RequestLog } from '@prisma/client'
 import { RequestLogSheet } from '@/components/pages/(root)/Webhooks/RequestLogSheet'
-import { Search } from 'lucide-react'
+import { Search, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
+import { DeleteConfirmationModal } from '@/components/shared/DeleteConfirmationModal'
 
 type Data = RequestLog
 
@@ -16,9 +17,9 @@ type Props = {
   page: number
   pageSize: number
   totalItems: number
-  // deleteWebhookAction: (
-  //   id: number,
-  // ) => Promise<{ error: string; message: string } | undefined>
+  deleteWebhookAction: (
+    id: number,
+  ) => Promise<{ error: string; message: string } | undefined>
 }
 
 export function WebhookRequestsDataTableWrapper({
@@ -26,33 +27,25 @@ export function WebhookRequestsDataTableWrapper({
   page,
   pageSize,
   totalItems,
-  // deleteWebhookAction,
+  deleteWebhookAction,
 }: Props) {
-  // const router = useRouter()
-  const t = useTranslations('WebhookPage.WebhookDetail.Datatable')
-  const tCommon = useTranslations('Datatable')
+  const t = useTranslations()
 
   const columns: ColumnDef<Data>[] = [
     {
       accessorKey: 'method',
-      header: t('Method'),
-      cell: ({ row }) => (
-        row.original.method ?? tCommon('NA')
-      ),
+      header: t('WebhookPage.WebhookDetail.Datatable.Method'),
+      cell: ({ row }) => row.original.method ?? t('Datatable.NA'),
     },
     {
       accessorKey: 'origin',
-      header: t('Origin'),
-      cell: ({ row }) => (
-        row.original.origin ?? tCommon('NA')
-      ),
+      header: t('WebhookPage.WebhookDetail.Datatable.Origin'),
+      cell: ({ row }) => row.original.origin ?? t('Datatable.NA'),
     },
     {
       accessorKey: 'ip',
-      header: t('Ip'),
-      cell: ({ row }) => (
-        row.original.ip ?? tCommon('NA')
-      ),
+      header: t('WebhookPage.WebhookDetail.Datatable.Ip'),
+      cell: ({ row }) => row.original.ip ?? t('Datatable.NA'),
     },
     {
       id: 'actions',
@@ -61,22 +54,18 @@ export function WebhookRequestsDataTableWrapper({
         <div className="flex gap-2 justify-end">
           <RequestLogSheet request={row.original}>
             <Button variant="outline" size="icon">
-              <Search/>
+              <Search className="size-4" />
             </Button>
           </RequestLogSheet>
-          {/*<DeleteConfirmationModal*/}
-          {/*  deleteId={row.original.id}*/}
-          {/*  action={deleteWebhookAction}*/}
-          {/*  description={t('DeleteMessage')}*/}
-          {/*>*/}
-          {/*  <Button*/}
-          {/*    variant="destructive"*/}
-          {/*    size="icon"*/}
-          {/*    onClick={(e) => e.stopPropagation()}*/}
-          {/*  >*/}
-          {/*    <Trash2 className="size-4" />*/}
-          {/*  </Button>*/}
-          {/*</DeleteConfirmationModal>*/}
+          <DeleteConfirmationModal
+            deleteId={row.original.id}
+            action={deleteWebhookAction}
+            description={t('WebhookPage.WebhookDetail.Datatable.DeleteMessage')}
+          >
+            <Button variant="destructive" size="icon">
+              <Trash2 className="size-4" />
+            </Button>
+          </DeleteConfirmationModal>
         </div>
       ),
     },

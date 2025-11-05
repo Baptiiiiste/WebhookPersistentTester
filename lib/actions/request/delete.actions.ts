@@ -1,16 +1,17 @@
 'use server'
 
-import { redirect } from 'next/navigation'
-import { ROUTES } from '@/constants/routes'
-import { deleteWebhookService } from '@/services/webhook/delete'
 import { Prisma } from '@prisma/client'
 import { getTranslations } from 'next-intl/server'
+import { deleteRequestService } from '@/services/request/delete'
+import { ROUTES } from '@/constants/routes'
+import { redirect } from 'next/navigation'
 
-export async function deleteWebhookByIdActions(id: number) {
+export async function deleteRequestByIdActions(id: number) {
   const t = await getTranslations('WebhookPage.Errors')
+  let deletedRequest
   try {
     // TODO: Check if user is the owner of the webhook before deleting the request log
-    await deleteWebhookService(id)
+    deletedRequest = await deleteRequestService(id)
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       switch (error.code) {
@@ -36,6 +37,5 @@ export async function deleteWebhookByIdActions(id: number) {
       message: t('UNKNOWN'),
     }
   }
-
-  redirect(`/${ROUTES.WEBHOOKS}`)
+  redirect(`/${ROUTES.WEBHOOKS}/${deletedRequest.webhook.url}`)
 }
