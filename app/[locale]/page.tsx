@@ -13,10 +13,13 @@ import NumbersThatSpeak from '@/components/pages/(auth)/landing/NumbersThatSpeak
 import EffortlessIntegration from '@/components/pages/(auth)/landing/EffortlessIntegration'
 import YourWorkInSync from '@/components/pages/(auth)/landing/YourWorkInSync'
 import SmartSimpleBrilliant from '@/components/pages/(auth)/landing/SmartSimpleBrilliant'
+import { SITENAME } from '@/constants/globals'
+import { LANDING_PAGE_LINKS, ROUTES } from '@/constants/routes'
+import { Link } from '@/lib/i18n/navigation'
 
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="px-[14px] py-[6px] bg-secondary shadow-[0px_0px_0px_4px_rgba(255,255,255,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-primary/30 shadow-xs">
+    <div className="px-[14px] py-[6px] bg-secondary shadow-[0px_0px_0px_4px_rgba(255,255,255,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-primary/30">
       <div className="w-[14px] h-[14px] relative overflow-hidden flex items-center justify-center">
         {icon}
       </div>
@@ -85,35 +88,30 @@ export default function LandingPage() {
                 <div className="flex justify-center items-center">
                   <div className="flex justify-start items-center gap-2">
                     <div className="flex flex-col justify-center text-foreground text-sm sm:text-base md:text-lg lg:text-xl font-semibold leading-5 font-sans">
-                      WebhookTest
+                      {SITENAME}
                     </div>
                     <div className="px-2 py-0.5 bg-primary/20 rounded text-primary text-[10px] font-medium">
                       BETA
                     </div>
                   </div>
                   <div className="pl-3 sm:pl-4 md:pl-5 lg:pl-5 flex justify-start items-start hidden sm:flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-4">
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-muted-foreground hover:text-foreground transition-colors text-xs md:text-[13px] font-medium leading-[14px] font-sans cursor-pointer">
-                        Features
+                    {LANDING_PAGE_LINKS.map((link) => (
+                      <div className="flex justify-start items-center" key={link.name}>
+                        <a
+                          href={link.url}
+                          className="flex flex-col justify-center text-muted-foreground hover:text-foreground transition-colors text-xs md:text-[13px] font-medium leading-[14px] font-sans cursor-pointer"
+                        >
+                          {link.name}
+                        </a>
                       </div>
-                    </div>
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-muted-foreground hover:text-foreground transition-colors text-xs md:text-[13px] font-medium leading-[14px] font-sans cursor-pointer">
-                        Pricing
-                      </div>
-                    </div>
-                    <div className="flex justify-start items-center">
-                      <div className="flex flex-col justify-center text-muted-foreground hover:text-foreground transition-colors text-xs md:text-[13px] font-medium leading-[14px] font-sans cursor-pointer">
-                        Docs
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
                 <div className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
                   <div className="px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-secondary hover:bg-secondary/80 transition-colors shadow-[0px_1px_2px_rgba(0,0,0,0.3)] overflow-hidden rounded-full flex justify-center items-center cursor-pointer border border-border">
-                    <div className="flex flex-col justify-center text-foreground text-xs md:text-[13px] font-medium leading-5 font-sans">
+                    <Link href={ROUTES.SIGN_IN} className="flex flex-col justify-center text-foreground text-xs md:text-[13px] font-medium leading-5 font-sans">
                       Sign in
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -144,9 +142,6 @@ export default function LandingPage() {
                       Get your webhook URL
                     </div>
                   </div>
-                </div>
-                <div className="text-muted-foreground text-sm">
-                  Free forever • No credit card required
                 </div>
               </div>
 
