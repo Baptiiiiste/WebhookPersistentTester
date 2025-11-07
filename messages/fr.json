@@ -66,14 +66,36 @@
           "Title": "Collaborate seamlessly",
           "Description": "Work together in real-time with your team and share insights instantly."
         }
+      }
+    },
+    "Pricing": {
+      "Badge": "Plans & Pricing",
+      "Title": "Simple, transparent pricing",
+      "Description": {
+        "Part1": "Start testing webhooks for free. Upgrade to Pro for advanced features",
+        "Part2": "and higher limits when you need them."
       },
-      "Pricing": {
-        "Badge": "Plans & Pricing",
-        "Title": "Simple, transparent pricing",
-        "Description": {
-          "Part1": "Choose a plan that fits your needs. No hidden fees, no surprises.",
-          "Part2": "Upgrade or downgrade anytime."
-        }
+      "Billing": {
+        "Monthly": "Monthly",
+        "Annually" : "Annualy",
+        "BilledMonthly": "per month",
+        "BilledAnnually": "per month, billed annually",
+        "Forever": "forever"
+      },
+      "Plans": {
+        "FREE" : "Perfect for testing and small projects.",
+        "PRO": "Advanced features for production use.",
+        "Popular": "POPULAR"
+      },
+      "Advantages": {
+        "RequestPerMonth": "requests per month",
+        "WebhookCount": "webhook",
+        "History": "day request history",
+        "ReplayRequest": "Replay your requests"
+      },
+      "CTA": {
+        "FREE": "Start for free",
+        "PRO": "Get started"
       }
     }
   },

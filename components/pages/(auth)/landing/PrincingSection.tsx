@@ -2,11 +2,15 @@
 
 import { useState } from 'react'
 import { PLANS } from '@/constants/plans'
+import { useTranslations } from 'next-intl'
 
 export function PricingSection() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annually'>(
     'monthly',
   )
+
+  const t = useTranslations('LandingPage.Pricing')
+  const tPlans = useTranslations('Configuration.Plans')
 
   const pricing = {
     free: {
@@ -44,21 +48,20 @@ export function PricingSection() {
               </svg>
             </div>
             <div className="text-center flex justify-center flex-col text-[#37322F] text-xs font-medium leading-3 font-sans">
-              Plans & Pricing
+              {t('Badge')}
             </div>
           </div>
 
           {/* Title */}
-          <div className="self-stretch text-center flex justify-center flex-col text-[#49423D] text-3xl md:text-5xl font-semibold leading-tight md:leading-[60px] font-sans tracking-tight">
-            Simple, transparent pricing
+          <div className="w-full max-w-[472.55px] text-center flex justify-center flex-col text-foreground text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-tight md:leading-[60px] font-sans tracking-tight">
+            {t('Title')}
           </div>
 
           {/* Description */}
-          <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Start testing webhooks for free. Upgrade to Plus for advanced
-            features
+          <div className="self-stretch text-center text-muted-foreground text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
+            {t('Description.Part1')}
             <br />
-            and higher limits when you need them.
+            {t('Description.Part2')}
           </div>
         </div>
       </div>
@@ -73,24 +76,9 @@ export function PricingSection() {
           <div className="p-[2px] bg-[rgba(55,50,47,0.10)] shadow-[0px_1px_0px_white] rounded-[99px] border-[0.5px] border-[rgba(55,50,47,0.08)] flex justify-center items-center gap-[2px] relative">
             <div
               className={`absolute top-[2px] w-[calc(50%-1px)] h-[calc(100%-4px)] bg-white shadow-[0px_2px_4px_rgba(0,0,0,0.08)] rounded-[99px] transition-all duration-300 ease-in-out ${
-                billingPeriod === 'annually' ? 'left-[2px]' : 'right-[2px]'
+                billingPeriod === 'monthly' ? 'left-[2px]' : 'right-[2px]'
               }`}
             />
-
-            <button
-              onClick={() => setBillingPeriod('annually')}
-              className="px-4 py-1 rounded-[99px] flex justify-center items-center gap-2 transition-colors duration-300 relative z-10 flex-1"
-            >
-              <div
-                className={`text-[13px] font-medium leading-5 font-sans transition-colors duration-300 ${
-                  billingPeriod === 'annually'
-                    ? 'text-[#37322F]'
-                    : 'text-[#6B7280]'
-                }`}
-              >
-                Annually
-              </div>
-            </button>
 
             <button
               onClick={() => setBillingPeriod('monthly')}
@@ -103,7 +91,22 @@ export function PricingSection() {
                     : 'text-[#6B7280]'
                 }`}
               >
-                Monthly
+                {t('Billing.Monthly')}
+              </div>
+            </button>
+
+            <button
+              onClick={() => setBillingPeriod('annually')}
+              className="px-4 py-1 rounded-[99px] flex justify-center items-center gap-2 transition-colors duration-300 relative z-10 flex-1"
+            >
+              <div
+                className={`text-[13px] font-medium leading-5 font-sans transition-colors duration-300 ${
+                  billingPeriod === 'annually'
+                    ? 'text-[#37322F]'
+                    : 'text-[#6B7280]'
+                }`}
+              >
+                {t('Billing.Annually')}
               </div>
             </button>
           </div>
@@ -139,20 +142,20 @@ export function PricingSection() {
               <div className="self-stretch flex flex-col justify-start items-center gap-9">
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="text-[rgba(55,50,47,0.90)] text-lg font-medium leading-7 font-sans">
-                    Free
+                    {tPlans('FREE')}
                   </div>
                   <div className="w-full text-[rgba(41,37,35,0.70)] text-sm font-normal leading-5 font-sans">
-                    Perfect for testing and small projects.
+                    {t('Plans.FREE')}
                   </div>
                 </div>
 
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="flex flex-col justify-start items-start gap-1">
                     <div className="relative h-[60px] flex items-center text-[#37322F] text-5xl font-medium leading-[60px] font-serif">
-                      $0
+                      {PLANS.FREE.priceMonthly} €
                     </div>
                     <div className="text-[#847971] text-sm font-medium font-sans">
-                      forever
+                      {t('Billing.Forever')}
                     </div>
                   </div>
                 </div>
@@ -160,19 +163,16 @@ export function PricingSection() {
                 <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center cursor-pointer hover:bg-[#37322F]/90 transition-colors">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
                   <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
-                    Start for free
+                    {t('CTA.FREE')}
                   </div>
                 </div>
               </div>
 
               <div className="self-stretch flex flex-col justify-start items-start gap-2">
                 {[
-                  '100 requests per month',
-                  '7 day request history',
-                  'Basic payload inspection',
-                  'Request replay',
-                  'Email notifications',
-                  'Community support',
+                  `${PLANS.FREE.maxRequests} ${t('Advantages.RequestPerMonth')}`,
+                  `${PLANS.FREE.maxWebhooks} ${t('Advantages.WebhookCount')}`,
+                  `${PLANS.FREE.autoDeleteRequestsAfterDays} ${t('Advantages.History')}`,
                 ].map((feature, index) => (
                   <div
                     key={index}
@@ -210,14 +210,14 @@ export function PricingSection() {
                 <div className="self-stretch flex flex-col justify-start items-start gap-2">
                   <div className="flex items-center gap-2">
                     <div className="text-[#FBFAF9] text-lg font-medium leading-7 font-sans">
-                      Plus
+                      {tPlans('PRO')}
                     </div>
                     <div className="px-2 py-0.5 bg-primary/20 rounded text-primary text-[10px] font-medium">
-                      POPULAR
+                      {t('Plans.Popular')}
                     </div>
                   </div>
                   <div className="w-full text-[#B2AEA9] text-sm font-normal leading-5 font-sans">
-                    Advanced features for production use.
+                    {t('Plans.PRO')}
                   </div>
                 </div>
 
@@ -225,7 +225,7 @@ export function PricingSection() {
                   <div className="flex flex-col justify-start items-start gap-1">
                     <div className="relative h-[60px] flex items-center text-[#F0EFEE] text-5xl font-medium leading-[60px] font-serif">
                       <span className="invisible">
-                        ${pricing.pro[billingPeriod]}
+                        {pricing.pro[billingPeriod]} €
                       </span>
                       <span
                         className="absolute inset-0 flex items-center transition-all duration-500"
@@ -236,7 +236,7 @@ export function PricingSection() {
                         }}
                         aria-hidden={billingPeriod !== 'annually'}
                       >
-                        ${pricing.pro.annually}
+                        {pricing.pro.annually} €
                       </span>
                       <span
                         className="absolute inset-0 flex items-center transition-all duration-500"
@@ -247,11 +247,13 @@ export function PricingSection() {
                         }}
                         aria-hidden={billingPeriod !== 'monthly'}
                       >
-                        ${pricing.pro.monthly}
+                        {pricing.pro.monthly} €
                       </span>
                     </div>
                     <div className="text-[#D2C6BF] text-sm font-medium font-sans">
-                      per {billingPeriod === 'monthly' ? 'month' : 'year'}
+                      {billingPeriod === 'monthly'
+                        ? t('Billing.BilledMonthly')
+                        : t('Billing.BilledAnnually')}
                     </div>
                   </div>
                 </div>
@@ -260,23 +262,17 @@ export function PricingSection() {
                 <div className="self-stretch px-4 py-[10px] relative bg-[#FBFAF9] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center cursor-pointer hover:bg-[#FBFAF9]/90 transition-colors">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
                   <div className="flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
-                    Get started
+                    {t('CTA.PRO')}
                   </div>
                 </div>
               </div>
 
               <div className="self-stretch flex flex-col justify-start items-start gap-2">
                 {[
-                  'Unlimited requests',
-                  '90 day request history',
-                  'Advanced payload inspection',
-                  'Unlimited request replay',
-                  'Custom webhook URLs',
-                  'Real-time analytics',
-                  'Webhook forwarding',
-                  'Priority support',
-                  'Team collaboration',
-                  'API access',
+                  `${PLANS.PRO.maxRequests} ${t('Advantages.RequestPerMonth')}`,
+                  `${PLANS.PRO.maxWebhooks} ${t('Advantages.WebhookCount')}`,
+                  `${PLANS.PRO.autoDeleteRequestsAfterDays} ${t('Advantages.History')}`,
+                  `${t('Advantages.ReplayRequest')}`,
                 ].map((feature, index) => (
                   <div
                     key={index}
