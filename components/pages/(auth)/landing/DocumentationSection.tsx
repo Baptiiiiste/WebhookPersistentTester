@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import type React from 'react'
+import { useTranslations } from 'next-intl'
 
 // Badge component for consistency
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -20,24 +21,22 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
 export function DocumentationSection() {
   const [activeCard, setActiveCard] = useState(0)
   const [animationKey, setAnimationKey] = useState(0)
+  const t = useTranslations('LandingPage.Documentation')
 
   const cards = [
     {
-      title: 'Plan your schedules',
-      description:
-        'Explore your data, build your dashboard,\nbring your team together.',
+      title: t('Features.Feature1.Title'),
+      description: t('Features.Feature1.Description'),
       image: '/modern-dashboard-interface-with-data-visualization.jpg',
     },
     {
-      title: 'Data to insights in minutes',
-      description:
-        'Transform raw data into actionable insights\nwith powerful analytics tools.',
+      title: t('Features.Feature2.Title'),
+      description: t('Features.Feature2.Description'),
       image: '/analytics-dashboard.png',
     },
     {
-      title: 'Collaborate seamlessly',
-      description:
-        'Work together in real-time with your team\nand share insights instantly.',
+      title: t('Features.Feature3.Title'),
+      description: t('Features.Feature3.Description'),
       image: '/team-collaboration-interface-with-shared-workspace.jpg',
     },
   ]
@@ -65,15 +64,15 @@ export function DocumentationSection() {
             icon={
               <div className="w-[10.50px] h-[10.50px] outline outline-[1.17px] outline-[#37322F] outline-offset-[-0.58px] rounded-full"></div>
             }
-            text="Platform Features"
+            text={t('Badge')}
           />
-          <div className="self-stretch text-center flex justify-center flex-col text-[#49423D] text-3xl md:text-5xl font-semibold leading-tight md:leading-[60px] font-sans tracking-tight">
-            Streamline your business operations
+          <div className="w-full max-w-[472.55px] text-center flex justify-center flex-col text-foreground text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-tight md:leading-[60px] font-sans tracking-tight">
+            {t('Title')}
           </div>
-          <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Manage schedules, analyze data, and collaborate with your team
+          <div className="self-stretch text-center text-muted-foreground text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
+            {t('Description.Part1')}
             <br />
-            all in one powerful platform.
+            {t('Description.Part2')}
           </div>
         </div>
       </div>

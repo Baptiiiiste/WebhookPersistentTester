@@ -11,6 +11,72 @@
     "Copy": "Copier",
     "Copied": "Copié"
   },
+  "LandingPage": {
+    "Buttons": {
+      "SignIn": "Sign in",
+      "CTA": "Get your webhook URL"
+    },
+    "Slogan": {
+      "Part1": "Debug webhooks with",
+      "Part2": "persistent storage"
+    },
+    "Description": {
+        "Part1": "Inspect payloads, replay requests, and monitor webhooks in real-time.",
+        "Part2": "Never lose a webhook event again with automatic persistence."
+    },
+    "FeatureCards": {
+      "Feature1": {
+        "Title": "Inspect payloads",
+        "Description": "View complete webhook payloads with syntax highlighting and search capabilities."
+      },
+      "Feature2": {
+        "Title": "Replay requests",
+        "Description": "Replay any webhook to your endpoint for testing and debugging purposes."
+      },
+      "Feature3": {
+        "Title": "Monitor in real-time",
+        "Description": "Track webhook delivery, response times, and success rates with live analytics."
+      }
+    },
+    "Trusted": {
+      "Badge": "Trusted by developers",
+        "Title": "Built for developer workflows",
+        "Description": {
+          "Part1": "Thousands of developers rely on",
+          "Part2": "to debug and monitor their webhook integrations."
+        }
+    },
+    "Documentation": {
+      "Badge": "Platform features",
+      "Title": "Everything you need to test webhooks",
+      "Description": {
+        "Part1": "Powerful features designed for developers who need",
+        "Part2": "reliable webhook testing and debugging tools."
+      },
+      "Features": {
+        "Feature1": {
+          "Title": "Plan your schedules",
+          "Description": "Explore your data, build your dashboard, bring your team together."
+        },
+        "Feature2": {
+          "Title": "Data to insights in minutes",
+          "Description": "Transform raw data into actionable insights with powerful analytics tools."
+        },
+        "Feature3": {
+          "Title": "Collaborate seamlessly",
+          "Description": "Work together in real-time with your team and share insights instantly."
+        }
+      },
+      "Pricing": {
+        "Badge": "Plans & Pricing",
+        "Title": "Simple, transparent pricing",
+        "Description": {
+          "Part1": "Choose a plan that fits your needs. No hidden fees, no surprises.",
+          "Part2": "Upgrade or downgrade anytime."
+        }
+      }
+    }
+  },
   "Datatable" : {
     "LinesPerPage": "Lignes par page",
     "Amount": "{count, plural, one {# élément} other {# éléments}}",

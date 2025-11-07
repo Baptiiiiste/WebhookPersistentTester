@@ -1,20 +1,21 @@
 'use client'
 
 import { useState } from 'react'
+import { PLANS } from '@/constants/plans'
 
 export function PricingSection() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annually'>(
-    'annually',
+    'monthly',
   )
 
   const pricing = {
     free: {
-      monthly: 0,
-      annually: 0,
+      monthly: PLANS.FREE.priceMonthly,
+      annually: PLANS.FREE.priceAnnualyBilledMonthly,
     },
-    plus: {
-      monthly: 29,
-      annually: 24, // ~17% discount for annual
+    pro: {
+      monthly: PLANS.PRO.priceMonthly,
+      annually: PLANS.PRO.priceAnnualyBilledMonthly,
     },
   }
 
@@ -224,7 +225,7 @@ export function PricingSection() {
                   <div className="flex flex-col justify-start items-start gap-1">
                     <div className="relative h-[60px] flex items-center text-[#F0EFEE] text-5xl font-medium leading-[60px] font-serif">
                       <span className="invisible">
-                        ${pricing.plus[billingPeriod]}
+                        ${pricing.pro[billingPeriod]}
                       </span>
                       <span
                         className="absolute inset-0 flex items-center transition-all duration-500"
@@ -235,7 +236,7 @@ export function PricingSection() {
                         }}
                         aria-hidden={billingPeriod !== 'annually'}
                       >
-                        ${pricing.plus.annually}
+                        ${pricing.pro.annually}
                       </span>
                       <span
                         className="absolute inset-0 flex items-center transition-all duration-500"
@@ -246,7 +247,7 @@ export function PricingSection() {
                         }}
                         aria-hidden={billingPeriod !== 'monthly'}
                       >
-                        ${pricing.plus.monthly}
+                        ${pricing.pro.monthly}
                       </span>
                     </div>
                     <div className="text-[#D2C6BF] text-sm font-medium font-sans">
