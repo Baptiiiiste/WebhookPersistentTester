@@ -1,8 +1,9 @@
 'use server'
 
 import { upsertGoogleService } from '@/services/auth/upsert-google.service'
+import type { GoogleProfile } from 'next-auth/providers/google'
 
-export async function authorizeGoogleAction(profile: any) {
+export async function authorizeGoogleAction(profile: GoogleProfile) {
   const user = await upsertGoogleService(profile.email, profile.name)
 
   return {

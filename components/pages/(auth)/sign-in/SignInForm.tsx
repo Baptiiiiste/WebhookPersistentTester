@@ -28,7 +28,7 @@ import { ENABLED_AUTH_PROVIDERS } from '@/constants/auth'
 
 interface Props {
   action: FormActionCallback<SignInSchema>
-  googleAuthAction: any
+  googleAuthAction: () => Promise<void>
 }
 
 export function SignInForm({ action }: Props) {

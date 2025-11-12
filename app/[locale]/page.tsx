@@ -4,19 +4,15 @@ import type React from 'react'
 
 import { useState, useEffect, useRef } from 'react'
 import { DocumentationSection } from '@/components/pages/(auth)/landing/DocumentationSection'
-import { TestimonialsSection } from '@/components/pages/(auth)/landing/TestimonialSection'
 import { PricingSection } from '@/components/pages/(auth)/landing/PrincingSection'
 import { FAQSection } from '@/components/pages/(auth)/landing/FaqSection'
 import { CTASection } from '@/components/pages/(auth)/landing/CtaSection'
 import { FooterSection } from '@/components/pages/(auth)/landing/FooterSection'
-import NumbersThatSpeak from '@/components/pages/(auth)/landing/NumbersThatSpeak'
-import EffortlessIntegration from '@/components/pages/(auth)/landing/EffortlessIntegration'
-import YourWorkInSync from '@/components/pages/(auth)/landing/YourWorkInSync'
-import SmartSimpleBrilliant from '@/components/pages/(auth)/landing/SmartSimpleBrilliant'
 import { SITENAME } from '@/constants/globals'
 import { LANDING_PAGE_LINKS, ROUTES } from '@/constants/routes'
 import { Link } from '@/lib/i18n/navigation'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
@@ -143,7 +139,10 @@ export default function LandingPage() {
               <div className="w-full max-w-[497px] lg:w-[497px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 relative z-10 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
                 <div className="backdrop-blur-[8.25px] flex justify-start items-center gap-4">
                   <div className="h-10 sm:h-11 md:h-12 px-6 sm:px-8 md:px-10 lg:px-12 py-2 sm:py-[6px] relative bg-primary hover:bg-primary/90 transition-colors shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.1)_inset] overflow-hidden rounded-full flex justify-center items-center cursor-pointer">
-                    <Link href={ROUTES.SIGN_IN} className="flex flex-col justify-center text-primary-foreground text-sm sm:text-base md:text-[15px] font-semibold leading-5 font-sans">
+                    <Link
+                      href={ROUTES.SIGN_IN}
+                      className="flex flex-col justify-center text-primary-foreground text-sm sm:text-base md:text-[15px] font-semibold leading-5 font-sans"
+                    >
                       {t('Buttons.CTA')}
                     </Link>
                   </div>
@@ -151,7 +150,7 @@ export default function LandingPage() {
               </div>
 
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
-                <img
+                <Image
                   src="/mask-group-pattern.svg"
                   alt=""
                   className="w-[936px] sm:w-[1404px] md:w-[2106px] lg:w-[2808px] h-auto opacity-30 sm:opacity-40 md:opacity-50 mix-blend-multiply"
@@ -351,7 +350,6 @@ export default function LandingPage() {
                 <div className="self-stretch px-4 sm:px-6 md:px-24 py-8 sm:py-12 md:py-16 border-b border-border flex justify-center items-center gap-6">
                   <div className="w-full max-w-[586px] px-4 sm:px-6 py-4 sm:py-5 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-3 sm:gap-4">
                     <Badge
-
                       icon={
                         <svg
                           width="12"
@@ -368,14 +366,14 @@ export default function LandingPage() {
                           />
                         </svg>
                       }
-                      text={t("Trusted.Badge")}
+                      text={t('Trusted.Badge')}
                     />
 
                     <div className="w-full max-w-[472.55px] text-center flex justify-center flex-col text-foreground text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-tight md:leading-[60px] font-sans tracking-tight">
-                      {t("Trusted.Title")}
+                      {t('Trusted.Title')}
                     </div>
                     <div className="self-stretch text-center text-muted-foreground text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      {t("Trusted.Description")}
+                      {t('Trusted.Description')}
                     </div>
                   </div>
                 </div>
@@ -421,7 +419,7 @@ export default function LandingPage() {
                           `}
                         >
                           <div className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 relative shadow-[0px_-4px_8px_rgba(255,255,255,0.64)_inset] overflow-hidden rounded-full">
-                            <img
+                            <Image
                               src="/horizon-icon.svg"
                               alt="Horizon"
                               className="w-full h-full object-contain"
