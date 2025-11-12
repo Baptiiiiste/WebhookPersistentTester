@@ -27,7 +27,6 @@ export async function WebhookUsageCard({ url }: Props) {
         <CardContent className="flex flex-col gap-4">
           <Input value={API_URL} readOnly />
           <WebhookUsageTips url={API_URL} />
-
         </CardContent>
       </Card>
     </>
