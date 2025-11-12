@@ -49,51 +49,34 @@ async function handleRequest(req: NextRequest, uuid: string) {
   return new NextResponse(undefined, { status })
 }
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+type RouteContext = {
+  params: { uuid: string }
 }
 
-export async function POST(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+export async function GET(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
 }
 
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+export async function POST(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
 }
 
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+export async function PUT(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+export async function PATCH(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
 }
 
-export async function OPTIONS(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+export async function DELETE(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
 }
 
-export async function HEAD(
-  req: NextRequest,
-  { params }: { params: { uuid: string } },
-) {
-  return handleRequest(req, params.uuid)
+export async function OPTIONS(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
+}
+
+export async function HEAD(req: NextRequest, context: RouteContext) {
+  return handleRequest(req, context.params.uuid)
 }
