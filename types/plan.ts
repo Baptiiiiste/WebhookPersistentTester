@@ -2,5 +2,7 @@ export type Plan = {
   maxWebhooks: number
   maxRequests: number
   autoDeleteRequestsAfterDays: number | null
-  price: number
+  priceMonthly: number
+  priceAnnualyBilledMonthly: number
+  canReplayRequests: boolean
 }

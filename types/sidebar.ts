@@ -11,3 +11,8 @@ export type SidebarLinkGroupType = {
   name: string | undefined
   links: SidebarLinkType[]
 }
+
+export type LandingLink = {
+  name: string
+  url: string
+}

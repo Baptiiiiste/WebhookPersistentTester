@@ -1,6 +1,6 @@
-import type { SidebarLinkGroupType } from '@/types/sidebar'
+import type { LandingLink, SidebarLinkGroupType } from '@/types/sidebar'
 import { ICONS } from '@/constants/icons'
-import { PAGE_NAMES } from '@/constants/pages'
+import { LANDING_PAGE_NAMES, PAGE_NAMES } from '@/constants/pages'
 import { Role } from '@prisma/client'
 
 export const ROUTES: Record<string, string> = {
@@ -11,7 +11,16 @@ export const ROUTES: Record<string, string> = {
   ADMIN: 'admin',
   PRICING: 'pricing',
   WEBHOOKS: 'webhooks',
+  TERMS_OF_USE: 'terms-of-use',
+  PRIVACY_POLICY: 'privacy-policy',
 }
+
+export const LANDING_PAGE_LINKS: LandingLink[] = [
+  {
+    name: LANDING_PAGE_NAMES.PRICING,
+    url: '#pricing',
+  },
+]
 
 export const ACTIONS_ROUTES: Record<string, string> = {
   UPDATE: 'edit',

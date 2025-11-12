@@ -13,93 +13,111 @@
   },
   "LandingPage": {
     "Buttons": {
-      "SignIn": "Se connecter",
-      "CTA": "Obtenez votre URL de webhook"
+      "SignIn": "Sign in",
+      "CTA": "Get your webhook URL"
     },
     "Slogan": {
-      "Part1": "Déboguez vos webhooks avec un",
-      "Part2": "stockage persistant"
+      "Part1": "Debug webhooks with",
+      "Part2": "persistent storage"
     },
-    "Description": "Inspectez les charges utiles, rejouez les requêtes et surveillez vos webhooks en temps réel. Ne perdez plus jamais un événement webhook grâce à la persistance automatique.",
+    "Description": {
+        "Part1": "Inspect payloads, replay requests, and monitor webhooks in real-time.",
+        "Part2": "Never lose a webhook event again with automatic persistence."
+    },
     "FeatureCards": {
       "Feature1": {
-        "Title": "Inspectez les charges utiles",
-        "Description": "Visualisez les charges utiles complètes de vos webhooks avec coloration syntaxique et fonction de recherche."
+        "Title": "Inspect payloads",
+        "Description": "View complete webhook payloads with syntax highlighting and search capabilities."
       },
       "Feature2": {
-        "Title": "Rejouez les requêtes",
-        "Description": "Rejouez n’importe quel webhook vers votre point de terminaison pour tester et déboguer facilement."
+        "Title": "Replay requests",
+        "Description": "Replay any webhook to your endpoint for testing and debugging purposes."
       },
       "Feature3": {
-        "Title": "Surveillez en temps réel",
-        "Description": "Suivez la livraison des webhooks, les temps de réponse et les taux de réussite avec des analyses en direct."
+        "Title": "Monitor in real-time",
+        "Description": "Track webhook delivery, response times, and success rates with live analytics."
       }
     },
     "Trusted": {
-      "Badge": "Plébiscité par les développeurs",
-      "Title": "Conçu pour les workflows des développeurs",
-      "Description": "Des milliers de développeurs font confiance à WPT pour déboguer et surveiller leurs intégrations webhook."
+      "Badge": "Trusted by developers",
+        "Title": "Built for developer workflows",
+        "Description": {
+          "Part1": "Thousands of developers rely on",
+          "Part2": "to debug and monitor their webhook integrations."
+        }
     },
     "Documentation": {
-      "Badge": "Fonctionnalités de la plateforme",
-      "Title": "Tout ce dont vous avez besoin pour tester vos webhooks",
-      "Description": "Des fonctionnalités puissantes conçues pour les développeurs qui recherchent des outils fiables de test et de débogage de webhooks.",
+      "Badge": "Platform features",
+      "Title": "Everything you need to test webhooks",
+      "Description": {
+        "Part1": "Powerful features designed for developers who need",
+        "Part2": "reliable webhook testing and debugging tools."
+      },
       "Features": {
         "Feature1": {
-          "Title": "Planifiez vos horaires",
-          "Description": "Explorez vos données, créez votre tableau de bord et rassemblez votre équipe."
+          "Title": "Plan your schedules",
+          "Description": "Explore your data, build your dashboard, bring your team together."
         },
         "Feature2": {
-          "Title": "Des données aux insights en quelques minutes",
-          "Description": "Transformez vos données brutes en informations exploitables grâce à des outils d’analyse performants."
+          "Title": "Data to insights in minutes",
+          "Description": "Transform raw data into actionable insights with powerful analytics tools."
         },
         "Feature3": {
-          "Title": "Collaborez en toute fluidité",
-          "Description": "Travaillez ensemble en temps réel avec votre équipe et partagez vos insights instantanément."
+          "Title": "Collaborate seamlessly",
+          "Description": "Work together in real-time with your team and share insights instantly."
         }
       }
     },
     "Pricing": {
-      "Badge": "Plans et tarifs",
-      "Title": "Des tarifs simples et transparents",
-      "Description": "Commencez à tester vos webhooks gratuitement. Passez à la version Pro pour des fonctionnalités avancées et des limites plus élevées quand vous en avez besoin.",
+      "Badge": "Plans & Pricing",
+      "Title": "Simple, transparent pricing",
+      "Description": {
+        "Part1": "Start testing webhooks for free. Upgrade to Pro for advanced features",
+        "Part2": "and higher limits when you need them."
+      },
       "Billing": {
-        "Monthly": "Mensuel",
-        "Annually": "Annuel",
-        "BilledMonthly": "par mois",
-        "BilledAnnually": "par mois, facturé annuellement",
-        "Forever": "pour toujours"
+        "Monthly": "Monthly",
+        "Annually" : "Annualy",
+        "BilledMonthly": "per month",
+        "BilledAnnually": "per month, billed annually",
+        "Forever": "forever"
       },
       "Plans": {
-        "FREE": "Parfait pour les tests et les petits projets.",
-        "PRO": "Fonctionnalités avancées.",
-        "Popular": "POPULAIRE"
+        "FREE" : "Perfect for testing and small projects.",
+        "PRO": "Advanced features for production use.",
+        "Popular": "POPULAR"
       },
       "Advantages": {
-        "RequestPerMonth": "requêtes par mois",
+        "RequestPerMonth": "requests per month",
         "WebhookCount": "webhook",
-        "History": "jours d’historique des requêtes",
-        "ReplayRequest": "Rejouez vos requêtes"
+        "History": "day request history",
+        "ReplayRequest": "Replay your requests"
       },
       "CTA": {
-        "FREE": "Commencer gratuitement",
-        "PRO": "Commencer"
+        "FREE": "Start for free",
+        "PRO": "Get started"
       }
     },
     "CTA": {
-      "FREE": "Commencer gratuitement",
-      "Title": "Prêt à transformer votre activité ?",
-      "Description": "Rejoignez des milliers d’entreprises qui optimisent leurs opérations, gèrent leurs plannings et se développent grâce à des insights basés sur les données."
+      "FREE": "Start for free",
+      "Title": "Ready to transform your business?",
+      "Description": {
+        "Part1": "Join thousands of businesses streamlining their operations",
+        "Part2": "managing schedules, and growing with data-driven insights."
+      }
     },
     "Footer": {
-      "Legal": "Mentions légales",
-      "AllRightsReserved": "Tous droits réservés",
-      "Terms": "Conditions d’utilisation",
+      "Legal": "Legal",
+      "AllRightsReserved": "All rights reserved",
+      "Terms": "Conditions d'utilisation",
       "Privacy": "Politique de confidentialité"
     },
     "FAQ": {
-      "Title": "Foire aux questions",
-      "Description": "Explorez vos données, créez votre tableau de bord, et rassemblez votre équipe."
+      "Title": "Frequently Asked Questions",
+      "Description": {
+        "Part1": "Explore your data, build your dashboard,",
+        "Part2": "bring your team together."
+      }
     }
   },
   "Datatable" : {
