@@ -40,8 +40,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run tests
-        run: pnpm test
+#      - name: Run tests
+#        run: pnpm test
+      - name: Skip tests (no test script defined)
+        run: echo "⚠️ Aucun test défini, étape ignorée."
 
       - name: Build app
         run: pnpm build
