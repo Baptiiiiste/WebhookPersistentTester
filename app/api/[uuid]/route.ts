@@ -53,48 +53,47 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
+
 export async function POST(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
+
 export async function PUT(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
+
 export async function PATCH(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
+
 export async function DELETE(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
+
 export async function OPTIONS(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
+
 export async function HEAD(
   req: NextRequest,
   { params }: { params: { uuid: string } },
 ) {
-  const { uuid } = await params
-  return handleRequest(req, uuid)
+  return handleRequest(req, params.uuid)
 }
