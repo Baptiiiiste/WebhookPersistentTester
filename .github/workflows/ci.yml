@@ -1,0 +1,99 @@
+name: CI Next.js
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - develop
+      - main
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose environment to deploy"
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+
+jobs:
+  # 1️⃣ Build & tests
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Build app
+        run: pnpm build
+
+  # 2️⃣ Build & push Docker image
+  docker-build-push:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    permissions:
+      contents: read
+      packages: write
+
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_ENV=${{ github.base_ref }}
+
+  # 3️⃣ Deploy in dev
+  deploy-dev:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.environment == 'dev' }}
+    steps:
+      - name: Manual DEV deployment
+        run: echo "🔧 Déploiement DEV manuel déclenché par ${{ github.actor }}"
+
+  # 4️⃣ Deploy in prod
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.environment == 'prod' }}
+    steps:
+      - name: Manual PROD deployment
+        run: echo "🚀 Déploiement PROD manuel déclenché par ${{ github.actor }}"
