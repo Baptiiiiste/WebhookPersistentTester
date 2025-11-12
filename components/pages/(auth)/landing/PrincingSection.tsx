@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { PLANS } from '@/constants/plans'
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { ROUTES } from '@/constants/routes'
 
 export function PricingSection() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annually'>(
@@ -59,9 +61,7 @@ export function PricingSection() {
 
           {/* Description */}
           <div className="self-stretch text-center text-muted-foreground text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-            {t('Description.Part1')}
-            <br />
-            {t('Description.Part2')}
+            {t('Description')}
           </div>
         </div>
       </div>
@@ -162,9 +162,12 @@ export function PricingSection() {
 
                 <div className="self-stretch px-4 py-[10px] relative bg-[#37322F] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center cursor-pointer hover:bg-[#37322F]/90 transition-colors">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0.20)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans">
+                  <Link
+                    href={'/' + ROUTES.PRICING}
+                    className="flex justify-center flex-col text-[#FBFAF9] text-[13px] font-medium leading-5 font-sans"
+                  >
                     {t('CTA.FREE')}
-                  </div>
+                  </Link>
                 </div>
               </div>
 
@@ -261,9 +264,12 @@ export function PricingSection() {
                 {/* CTA Button */}
                 <div className="self-stretch px-4 py-[10px] relative bg-[#FBFAF9] shadow-[0px_2px_4px_rgba(55,50,47,0.12)] overflow-hidden rounded-[99px] flex justify-center items-center cursor-pointer hover:bg-[#FBFAF9]/90 transition-colors">
                   <div className="w-full h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
-                  <div className="flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans">
+                  <Link
+                    href={'/' + ROUTES.PRICING}
+                    className="flex justify-center flex-col text-[#37322F] text-[13px] font-medium leading-5 font-sans"
+                  >
                     {t('CTA.PRO')}
-                  </div>
+                  </Link>
                 </div>
               </div>
 

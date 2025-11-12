@@ -135,9 +135,7 @@ export default function LandingPage() {
                     <span className="text-primary">{t('Slogan.Part2')}</span>
                   </div>
                   <div className="w-full max-w-[606px] lg:w-[606px] text-center flex justify-center flex-col text-muted-foreground sm:text-lg md:text-xl leading-[1.5] sm:leading-[1.55] md:leading-[1.6] lg:leading-[1.65] font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-normal text-base">
-                    {t('Description.Part1')}
-                    <br className="hidden sm:block" />
-                    {t('Description.Part2')}
+                    {t('Description')}
                   </div>
                 </div>
               </div>
@@ -145,9 +143,9 @@ export default function LandingPage() {
               <div className="w-full max-w-[497px] lg:w-[497px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 relative z-10 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
                 <div className="backdrop-blur-[8.25px] flex justify-start items-center gap-4">
                   <div className="h-10 sm:h-11 md:h-12 px-6 sm:px-8 md:px-10 lg:px-12 py-2 sm:py-[6px] relative bg-primary hover:bg-primary/90 transition-colors shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.1)_inset] overflow-hidden rounded-full flex justify-center items-center cursor-pointer">
-                    <div className="flex flex-col justify-center text-primary-foreground text-sm sm:text-base md:text-[15px] font-semibold leading-5 font-sans">
+                    <Link href={ROUTES.SIGN_IN} className="flex flex-col justify-center text-primary-foreground text-sm sm:text-base md:text-[15px] font-semibold leading-5 font-sans">
                       {t('Buttons.CTA')}
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -377,9 +375,7 @@ export default function LandingPage() {
                       {t("Trusted.Title")}
                     </div>
                     <div className="self-stretch text-center text-muted-foreground text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-                      {t("Trusted.Description.Part1")} {SITENAME}
-                      <br className="hidden sm:block" />
-                      {t("Trusted.Description.Part2")}
+                      {t("Trusted.Description")}
                     </div>
                   </div>
                 </div>

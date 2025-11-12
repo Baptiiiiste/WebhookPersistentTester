@@ -11,6 +11,8 @@ export const ROUTES: Record<string, string> = {
   ADMIN: 'admin',
   PRICING: 'pricing',
   WEBHOOKS: 'webhooks',
+  TERMS_OF_USE: 'terms-of-use',
+  PRIVACY_POLICY: 'privacy-policy',
 }
 
 export const LANDING_PAGE_LINKS: LandingLink[] = [

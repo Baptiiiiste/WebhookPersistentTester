@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface FAQItem {
   question: string
@@ -9,34 +10,16 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: 'What is Brillance and who is it for?',
-    answer:
-      "Brillance is a comprehensive billing automation platform designed for businesses that need custom contract management. It's perfect for SaaS companies, service providers, and enterprises looking to streamline their billing processes.",
+    question: 'Placeholder',
+    answer: 'Placeholder',
   },
   {
-    question: 'How does the custom contract billing work?',
-    answer:
-      'Our platform automatically processes your custom contracts, calculates billing amounts based on your specific terms, and generates invoices. You can set up complex pricing structures, usage-based billing, and custom billing cycles.',
+    question: 'Placeholder',
+    answer: 'Placeholder',
   },
   {
-    question: 'Can I integrate Brillance with my existing tools?',
-    answer:
-      'Yes! Brillance integrates seamlessly with popular CRM systems, accounting software, and payment processors. We support APIs and webhooks for custom integrations with your existing workflow.',
-  },
-  {
-    question: 'What kind of support do you provide?',
-    answer:
-      'We offer 24/7 customer support, dedicated account managers for enterprise clients, comprehensive documentation, and onboarding assistance to help you get started quickly.',
-  },
-  {
-    question: 'Is my data secure with Brillance?',
-    answer:
-      'Absolutely. We use enterprise-grade security measures including end-to-end encryption, SOC 2 compliance, and regular security audits. Your data is stored in secure, redundant data centers.',
-  },
-  {
-    question: 'How do I get started with Brillance?',
-    answer:
-      'Getting started is simple! Sign up for our free trial, connect your existing systems, and our onboarding team will help you set up your first custom billing workflow within 24 hours.',
+    question: 'Placeholder',
+    answer: 'Placeholder',
   },
 ]
 
@@ -70,18 +53,18 @@ export function FAQSection() {
     )
   }
 
+  const t = useTranslations('LandingPage.FAQ')
+
   return (
     <div className="w-full flex justify-center items-start">
       <div className="flex-1 px-4 md:px-12 py-16 md:py-20 flex flex-col lg:flex-row justify-start items-start gap-6 lg:gap-12">
         {/* Left Column - Header */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-4 lg:py-5">
-          <div className="w-full flex flex-col justify-center text-[#49423D] font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
-            Frequently Asked Questions
+          <div className="w-full flex flex-col justify-center font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
+            {t('Title')}
           </div>
           <div className="w-full text-[#605A57] text-base font-normal leading-7 font-sans">
-            Explore your data, build your dashboard,
-            <br className="hidden md:block" />
-            bring your team together.
+            {t('Description')}
           </div>
         </div>
 

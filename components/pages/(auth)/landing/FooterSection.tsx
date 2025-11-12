@@ -1,6 +1,11 @@
 import { SITENAME } from '@/constants/globals'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { ROUTES } from '@/constants/routes'
 
 export function FooterSection() {
+  const t = useTranslations('LandingPage.Footer')
+
   return (
     <div className="w-full pt-10 flex flex-col justify-start items-start">
       {/* Main Footer Content */}
@@ -9,84 +14,29 @@ export function FooterSection() {
           {/* Brand Section */}
           <div className="self-stretch flex justify-start items-center gap-3">
             <div className="text-center text-[#49423D] text-xl font-semibold leading-4 font-sans">
-              {SITENAME}
+              {SITENAME} - {t('AllRightsReserved')}
             </div>
           </div>
         </div>
 
-        {/* Navigation Links */}
         <div className="self-stretch p-4 md:p-8 flex flex-col sm:flex-row flex-wrap justify-start sm:justify-between items-start gap-6 md:gap-8">
-          {/* Product Column */}
-
-          {/* Product Column */}
-          <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
-            <div className="self-stretch text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">
-              Product
-            </div>
-            <div className="flex flex-col justify-end items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Features
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Pricing
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Integrations
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Real-time Previews
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Multi-Agent Coding
-              </div>
-            </div>
-          </div>
-
-          {/* Company Column */}
           <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
             <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">
-              Company
-            </div>
-            <div className="flex flex-col justify-center items-start gap-2">
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                About us
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Our team
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Careers
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Brand
-              </div>
-              <div className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Contact
-              </div>
-            </div>
-          </div>
-
-          {/* Resources Column */}
-          <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
-            <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">
-              Resources
+              {t('Legal')}
             </div>
             <div className="flex flex-col justify-center items-center gap-2">
-              <div className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Terms of use
-              </div>
-              <div className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                API Reference
-              </div>
-              <div className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Documentation
-              </div>
-              <div className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Community
-              </div>
-              <div className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
-                Support
-              </div>
+              <Link
+                href={'/' + ROUTES.TERMS_OF_USE}
+                className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-primary transition-colors"
+              >
+                {t('Terms')}
+              </Link>
+              <Link
+                href={'/' + ROUTES.PRIVACY_POLICY}
+                className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer transition-colors hover:text-primary"
+              >
+                {t('Privacy')}
+              </Link>
             </div>
           </div>
         </div>

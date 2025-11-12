@@ -70,9 +70,7 @@ export function DocumentationSection() {
             {t('Title')}
           </div>
           <div className="self-stretch text-center text-muted-foreground text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-            {t('Description.Part1')}
-            <br />
-            {t('Description.Part2')}
+            {t('Description')}
           </div>
         </div>
       </div>
