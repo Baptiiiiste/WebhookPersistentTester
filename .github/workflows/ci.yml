@@ -84,22 +84,27 @@ jobs:
           build-args: |
             NEXT_PUBLIC_ENV=${{ github.base_ref }}
 
-  # 3️⃣ Deploy in dev
+  # 3️⃣ Deploy in dev (manual only)
   deploy-dev:
     runs-on: ubuntu-latest
     needs: docker-build-push
-    environment:
-      name: dev
+    if: false  # Toujours skipped par défaut
     steps:
       - name: Manual DEV deployment
         run: echo "🔧 Déploiement DEV manuel déclenché par ${{ github.actor }}"
 
-  # 4️⃣ Deploy in prod
+  # 4️⃣ Deploy in prod (manual only, merge develop->main)
   deploy-prod:
     runs-on: ubuntu-latest
     needs: docker-build-push
-    environment:
-      name: prod
+    if: false  # Toujours skipped par défaut
     steps:
+      - name: Check if merge develop to main
+        run: |
+          if [[ "${{ github.base_ref }}" != "main" ]] || [[ "${{ github.head_ref }}" != "develop" ]]; then
+            echo "❌ Ce déploiement n'est autorisé que pour un merge develop → main"
+            exit 1
+          fi
+
       - name: Manual PROD deployment
         run: echo "🚀 Déploiement PROD manuel déclenché par ${{ github.actor }}"
