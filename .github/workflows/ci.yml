@@ -1,4 +1,4 @@
-name: CI Next.js
+name: CI & Deploy
 
 on:
   pull_request:
@@ -7,8 +7,20 @@ on:
       - develop
       - main
 
+  workflow_dispatch:
+    inputs:
+      deploy_target:
+        description: "Environnement à déployer"
+        required: false
+        type: choice
+        options:
+          - none
+          - dev
+          - prod
+        default: none
+
 jobs:
-  # Build & tests
+  # 1️⃣ Build & tests (toujours exécuté)
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -39,7 +51,8 @@ jobs:
       - name: Build app
         run: pnpm build
 
-  # Build & push Docker image
+
+  # 2️⃣ Build & push Docker image (toujours exécuté)
   docker-build-push:
     runs-on: ubuntu-latest
     needs: build-and-test
@@ -80,3 +93,65 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             NEXT_PUBLIC_ENV=${{ github.base_ref }}
+
+
+  # 3️⃣ Deploy DEV (manuel uniquement)
+  deploy-dev:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_target == 'dev'
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to DEV
+        run: |
+          echo "🔧 Déploiement DEV déclenché par ${{ github.actor }}"
+          echo "📦 Image: ghcr.io/${{ github.repository }}:latest"
+          # Ajoute ici tes commandes de déploiement DEV
+
+
+  # 4️⃣ Deploy PROD (manuel uniquement, branche main seulement)
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_target == 'prod'
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify branch is main
+        run: |
+          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "❌ Le déploiement PROD n'est autorisé que depuis la branche main"
+            echo "Branche actuelle: ${{ github.ref }}"
+            exit 1
+          fi
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to PROD
+        run: |
+          echo "🚀 Déploiement PROD déclenché par ${{ github.actor }}"
+          echo "📦 Image: ghcr.io/${{ github.repository }}:latest"
+          # Ajoute ici tes commandes de déploiement PROD
