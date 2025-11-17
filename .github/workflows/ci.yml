@@ -108,6 +108,7 @@ jobs:
           echo "🔧 Deploying on the server..."
           cd /home/baptiste/Dev/WPT/dev
           docker-compose pull
+          docker-compose down -v
           docker-compose up -d --remove-orphans
           echo "🚀 Deployed in DEV!"
 
@@ -134,5 +135,6 @@ jobs:
           echo "🔧 Deploying on the server (PROD)..."
           cd /home/baptiste/Dev/WPT/prod
           docker-compose pull
+          docker-compose down -v
           docker-compose up -d --remove-orphans
           echo "🚀 Deployed in PROD!"
