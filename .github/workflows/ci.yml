@@ -7,6 +7,11 @@ on:
       - develop
       - main
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'main'
 
 jobs:
   # 1️⃣ Build & tests
@@ -115,7 +120,7 @@ jobs:
   deploy-prod:
     runs-on: self-hosted
     needs: docker-build-push
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.event.inputs.branch == 'main' }}
     steps:
       - name: Clean workspace
         run: rm -rf *
