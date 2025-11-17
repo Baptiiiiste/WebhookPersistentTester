@@ -6,6 +6,7 @@ on:
     branches:
       - develop
       - main
+  workflow_dispatch:
 
 jobs:
   # 1️⃣ Build & tests
@@ -109,3 +110,29 @@ jobs:
           docker-compose pull
           docker-compose up -d --remove-orphans
           echo "🚀 Deployed in DEV!"
+
+  deploy-prod:
+    runs-on: self-hosted
+    needs: docker-build-push
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Clean workspace
+        run: rm -rf *
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull new image + restart PROD stack
+        run: |
+          echo "🔧 Deploying on the server (PROD)..."
+          cd /home/baptiste/Dev/WPT/prod
+          docker-compose pull
+          docker-compose up -d --remove-orphans
+          echo "🚀 Deployed in PROD!"
