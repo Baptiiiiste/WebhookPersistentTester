@@ -106,5 +106,6 @@ jobs:
           cd /home/baptiste/Dev/WPT/prod
           docker-compose pull
           docker rm -f wpt_website || true
+          docker-compose up -d --no-deps wpt_website
           docker-compose up -d --remove-orphans
           echo "🚀 Deployed in PROD!"
