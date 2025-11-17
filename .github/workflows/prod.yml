@@ -1,14 +1,9 @@
-name: "DEV - CI/CD"
+name: "PROD - CI/CD"
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - develop
-      - main
   push:
-    branches:
-      - main  # pour que PROD puisse se déclencher automatiquement si besoin
+    tags:
+      - 'v*.*.*'  # Se déclenche sur les tags de version (ex: v1.0.0, v2.1.3)
 
 jobs:
   # 1️⃣ Build & tests
@@ -72,6 +67,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
             type=sha,format=long
 
       - name: Build and push Docker image
@@ -82,41 +79,13 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_ENV=${{ github.base_ref }}
+            NEXT_PUBLIC_ENV=production
 
-  # 3️⃣ Deploy DEV (auto sur PR)
-  deploy-dev:
-    runs-on: self-hosted
-    needs: docker-build-push
-
-    steps:
-      - name: Clean workspace
-        run: rm -rf *
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Pull new image + restart DEV stack
-        run: |
-          echo "🔧 Deploying on DEV..."
-          cd /home/baptiste/Dev/WPT/dev
-          docker-compose pull
-          docker rm -f wpt-dev_website || true
-          docker-compose up -d --remove-orphans
-          echo "🚀 Deployed in DEV!"
-
-  # 4️⃣ Deploy PROD (skip par défaut, relançable sur main)
+  # 3️⃣ Deploy PROD
   deploy-prod:
     runs-on: self-hosted
     needs: docker-build-push
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+
     steps:
       - name: Clean workspace
         run: rm -rf *
