@@ -104,8 +104,7 @@ jobs:
         run: |
           echo "🔧 Deploying on PROD..."
           cd /home/baptiste/Dev/WPT/prod
-          docker-compose pull wpt_website
-          docker-compose stop wpt_website
-          docker-compose rm -f wpt_website
-          docker-compose up -d wpt_website
+          docker-compose pull
+          docker rm -f wpt_website || true
+          docker-compose up -d --remove-orphans
           echo "🚀 Deployed in PROD!"
