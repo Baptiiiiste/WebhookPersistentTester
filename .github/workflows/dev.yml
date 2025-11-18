@@ -108,7 +108,8 @@ jobs:
         run: |
           echo "🔧 Deploying on DEV..."
           cd /home/baptiste/Dev/WPT/dev
-          docker-compose pull
-          docker rm -f wpt-dev_website || true
-          docker-compose up -d --remove-orphans
+          docker-compose pull wpt-dev_website
+          docker-compose stop wpt-dev_website
+          docker-compose rm -f wpt-dev_website
+          docker-compose up -d wpt-dev_website
           echo "🚀 Deployed in DEV!"
