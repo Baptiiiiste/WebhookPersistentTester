@@ -1,5 +1,4 @@
 import { PageLayout } from '@/components/shared/PageLayout'
-import { PAGE_NAMES } from '@/constants/pages'
 import { ICONS } from '@/constants/icons'
 import { getTranslations } from 'next-intl/server'
 import { WebhooksDataTableWrapper } from '@/components/pages/(root)/Webhooks/WebhooksDatatableWrapper'

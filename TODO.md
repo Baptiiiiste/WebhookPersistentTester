@@ -1,5 +1,6 @@
 # TODO
 
+> Check "TODO" comments in the code for smaller tasks.
 
 - Handle webhook creation
 - Handle webhook edition

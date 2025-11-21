@@ -1,5 +1,4 @@
 import { PageLayout } from '@/components/shared/PageLayout'
-import { PAGE_NAMES } from '@/constants/pages'
 import { ICONS } from '@/constants/icons'
 import { DashboardInfoCard } from '@/components/pages/(root)/Dashboard/DashboardInfoCard'
 import { getTranslations } from 'next-intl/server'
@@ -10,6 +9,8 @@ import { getLoggedUserAction } from '@/lib/actions/user/getLoggedUser.actions'
 import { getAllWebhooksForLoggedUserActions } from '@/lib/actions/webhook/getAllWebhooksForLoggedUser.actions'
 import { DashboardWebhooksCard } from '@/components/pages/(root)/Dashboard/DashboardWebhooksCard'
 import { DashbordRequestChartCard } from '@/components/pages/(root)/Dashboard/DashboardRequestsChartCard'
+import { deleteRequestByIdActions } from '@/lib/actions/request/delete.actions'
+import { createWebhookAction } from '@/lib/actions/webhook/create.actions'
 
 export default async function DashboardPage() {
   const t = await getTranslations('DashboardPage')
@@ -17,6 +18,11 @@ export default async function DashboardPage() {
   const loggedUser = await getLoggedUserAction()
   const webhooks = await getAllWebhooksForLoggedUserActions()
   const requestLogs = webhooks.items.flatMap((w) => w.requestLogs)
+
+  const handleCreate = async (name: string) => {
+    'use server'
+    return createWebhookAction(name);
+  }
 
   return (
     <PageLayout.Root className="h-screen">
@@ -76,7 +82,7 @@ export default async function DashboardPage() {
 
         <div className="grid gap-6 md:grid-cols-1 xl:grid-cols-3 flex-1 mt-6">
           <div className="lg:col-span-1">
-            <DashboardWebhooksCard webhooks={webhooks.items} />
+            <DashboardWebhooksCard webhooks={webhooks.items} handleCreate={handleCreate()} />
           </div>
           <div className="lg:col-span-2">
             <DashbordRequestChartCard requestLogs={requestLogs} />
