@@ -22,7 +22,7 @@ export default async function DashboardPage() {
     <PageLayout.Root className="h-screen">
       <PageLayout.Icon icon={ICONS.DASHBOARD} color="#3b82f6" />
 
-      <PageLayout.Title>{PAGE_NAMES.DASHBOARD}</PageLayout.Title>
+      <PageLayout.Title>{t('Title')}</PageLayout.Title>
 
       <PageLayout.Description>{t('Description')}</PageLayout.Description>
 

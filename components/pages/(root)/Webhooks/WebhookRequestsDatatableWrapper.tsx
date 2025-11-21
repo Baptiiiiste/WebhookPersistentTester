@@ -19,7 +19,8 @@ type Props = {
   totalItems: number
   deleteWebhookAction: (
     id: number,
-  ) => Promise<{ error: string; message: string } | undefined>
+  ) => Promise<{ error: string;
+    message: string } | undefined>
 }
 
 export function WebhookRequestsDataTableWrapper({
