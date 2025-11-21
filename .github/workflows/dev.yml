@@ -37,8 +37,8 @@ jobs:
       - name: Generate Prisma Client
         run: pnpm prisma generate
 
-      - name: Skip tests (no test script defined)
-        run: echo "⚠️ Aucun test défini, étape ignorée."
+      - name: Tests
+        run: pnpm run test
 
       - name: Build app
         run: pnpm build
