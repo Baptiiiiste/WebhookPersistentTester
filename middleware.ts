@@ -24,6 +24,13 @@ export async function middleware(request: NextRequest) {
     const locale = request.nextUrl.pathname.split('/')[1]
     const basePath = pathname.replace(`/${locale}`, '') || '/'
 
+    console.log('[middleware]', {
+      pathname,
+      locale,
+      basePath,
+      isAuthenticated: !!token,
+    })
+
     const isAuthenticated = !!token
     const isPublic = PUBLIC_ROUTES.map((route) => `/${route}`).includes(
       basePath,
