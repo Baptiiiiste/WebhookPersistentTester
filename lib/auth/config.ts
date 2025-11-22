@@ -7,6 +7,14 @@ export const AUTH_CONFIG: NextAuthConfig = {
   },
   trustHost: true,
   cookies: {
+    sessionToken: {
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
     callbackUrl: {
       options: {
         httpOnly: true,
