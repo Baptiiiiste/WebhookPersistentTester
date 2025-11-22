@@ -11,6 +11,11 @@
     "Copy": "Copier",
     "Copied": "Copié"
   },
+  "PricingPage": {
+    "Title": "Tarification",
+    "Description": "Plans et tarifs",
+    "TODO": "Le système de paiement a été désactivé pour le moment. Le plan gratuit a été temporairement mis à niveau vers le plan Pro pour tous les utilisateurs."
+  },
   "LandingPage": {
     "Buttons": {
       "SignIn": "Se connecter",
@@ -169,6 +174,7 @@
     }
   },
   "DashboardPage": {
+    "Title": "Tableau de bord",
     "Description": "Informations générales",
     "InfoCard": {
       "RequestsCount": {
@@ -194,6 +200,7 @@
     }
   },
   "WebhookPage": {
+    "Title": "Webhooks",
     "Description": "Gestion des webhooks",
     "MaxWebhooks": "Nombre de webhooks pour votre plan",
     "Usage" : {

@@ -1,21 +1,19 @@
 # TODO
 
+> Check "TODO" comments in the code for smaller tasks.
 
 - Handle webhook creation
 - Handle webhook edition
-- Handle request deletion
 - Handle webhook's page refresh on request /api/{id}
-- Update sidebar's header with logo
-- Update requests' datatable with more details and translations
-- Handle profile edition
+- Handle backend pagination for all datatables
+- Handle user profile page (email & password modification, plan details, invoices)
 - Handle Github login
 - Handle password reset
 - Update Google login
-- Create Admin page 
+- Create Admin page with stats
 - Handle stripe integration
 - Handle billing page
 - Handle plan selection
-
 
 # Future features
 - Auto deletion of requests after a certain period of time

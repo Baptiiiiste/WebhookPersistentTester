@@ -10,6 +10,9 @@ import { getTranslations } from 'next-intl/server'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { LinkIcon } from 'lucide-react'
 import { Link } from '@/lib/i18n/navigation'
+import { Button } from '@/components/ui/button'
+import { ROUTES } from '@/constants/routes'
+import { ICONS } from '@/constants/icons'
 
 type Props = {
   webhooks: (Webhook & { requestLogs: RequestLog[] })[]
@@ -21,7 +24,8 @@ export async function DashboardWebhooksCard({ webhooks }: Props) {
   return (
     <Card className="flex flex-col h-full max-h-[calc(100vh-2rem)]">
       <CardHeader className="flex-shrink-0">
-        <CardTitle>{t('Title')}</CardTitle>
+        <CardTitle>{t('Title')}
+        </CardTitle>
         <CardDescription>{t('Description')}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 min-h-0 p-0">

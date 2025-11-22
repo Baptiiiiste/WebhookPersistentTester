@@ -1,5 +1,4 @@
 import { PageLayout } from '@/components/shared/PageLayout'
-import { PAGE_NAMES } from '@/constants/pages'
 import { ICONS } from '@/constants/icons'
 import { DashboardInfoCard } from '@/components/pages/(root)/Dashboard/DashboardInfoCard'
 import { getTranslations } from 'next-intl/server'
@@ -10,6 +9,8 @@ import { getLoggedUserAction } from '@/lib/actions/user/getLoggedUser.actions'
 import { getAllWebhooksForLoggedUserActions } from '@/lib/actions/webhook/getAllWebhooksForLoggedUser.actions'
 import { DashboardWebhooksCard } from '@/components/pages/(root)/Dashboard/DashboardWebhooksCard'
 import { DashbordRequestChartCard } from '@/components/pages/(root)/Dashboard/DashboardRequestsChartCard'
+import { deleteRequestByIdActions } from '@/lib/actions/request/delete.actions'
+import { createWebhookAction } from '@/lib/actions/webhook/create.actions'
 
 export default async function DashboardPage() {
   const t = await getTranslations('DashboardPage')
@@ -22,7 +23,7 @@ export default async function DashboardPage() {
     <PageLayout.Root className="h-screen">
       <PageLayout.Icon icon={ICONS.DASHBOARD} color="#3b82f6" />
 
-      <PageLayout.Title>{PAGE_NAMES.DASHBOARD}</PageLayout.Title>
+      <PageLayout.Title>{t('Title')}</PageLayout.Title>
 
       <PageLayout.Description>{t('Description')}</PageLayout.Description>
 

@@ -150,14 +150,14 @@ export default function LandingPage() {
               </div>
 
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[320px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
-                <Image
-                  src="/mask-group-pattern.svg"
-                  alt=""
-                  className="w-[936px] sm:w-[1404px] md:w-[2106px] lg:w-[2808px] h-auto opacity-30 sm:opacity-40 md:opacity-50 mix-blend-multiply"
-                  style={{
-                    filter: 'hue-rotate(15deg) saturate(0.7) brightness(1.2)',
-                  }}
-                />
+                {/*<Image*/}
+                {/*  src="/mask-group-pattern.svg"*/}
+                {/*  alt=""*/}
+                {/*  className="w-[936px] sm:w-[1404px] md:w-[2106px] lg:w-[2808px] h-auto opacity-30 sm:opacity-40 md:opacity-50 mix-blend-multiply"*/}
+                {/*  style={{*/}
+                {/*    filter: 'hue-rotate(15deg) saturate(0.7) brightness(1.2)',*/}
+                {/*  }}*/}
+                {/*/>*/}
               </div>
 
               <div className="w-full max-w-[960px] lg:w-[960px] pt-2 sm:pt-4 pb-6 sm:pb-8 md:pb-10 px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center gap-2 relative z-5 my-8 sm:my-12 md:my-16 lg:my-16 mb-0 lg:pb-0">
@@ -419,11 +419,11 @@ export default function LandingPage() {
                           `}
                         >
                           <div className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 relative shadow-[0px_-4px_8px_rgba(255,255,255,0.64)_inset] overflow-hidden rounded-full">
-                            <Image
-                              src="/horizon-icon.svg"
-                              alt="Horizon"
-                              className="w-full h-full object-contain"
-                            />
+                            {/*<Image*/}
+                            {/*  src="/horizon-icon.svg"*/}
+                            {/*  alt="Horizon"*/}
+                            {/*  className="w-full h-full object-contain"*/}
+                            {/*/>*/}
                           </div>
                           <div className="text-center flex justify-center flex-col text-[#37322F] text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-tight md:leading-9 font-sans">
                             Acute

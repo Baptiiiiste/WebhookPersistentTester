@@ -4,7 +4,8 @@ import type { Plan } from '@/types/plan'
 export const PLANS: Record<Role, Plan> = {
   FREE: {
     maxWebhooks: 1,
-    maxRequests: 50,
+    // maxRequests: 50,
+    maxRequests: 250,
     autoDeleteRequestsAfterDays: 3,
     priceMonthly: 0,
     priceAnnualyBilledMonthly: 0,
