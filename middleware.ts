@@ -15,6 +15,7 @@ export async function middleware(request: NextRequest) {
     const token = await getToken({
       req: request,
       secret: process.env.NEXTAUTH_SECRET,
+      secureCookie: process.env.NODE_ENV === 'production',
     })
 
     // get pathname without trailing slash
@@ -23,13 +24,6 @@ export async function middleware(request: NextRequest) {
     // remove locale prefix to compare with PUBLIC_ROUTES
     const locale = request.nextUrl.pathname.split('/')[1]
     const basePath = pathname.replace(`/${locale}`, '') || '/'
-
-    console.log('[middleware]', {
-      pathname,
-      locale,
-      basePath,
-      isAuthenticated: !!token,
-    })
 
     const isAuthenticated = !!token
     const isPublic = PUBLIC_ROUTES.map((route) => `/${route}`).includes(
