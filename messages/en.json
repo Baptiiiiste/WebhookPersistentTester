@@ -1,0 +1,247 @@
+{
+  "Configuration": {
+    "Plans": {
+      "FREE": "Free",
+      "PRO": "Pro",
+      "ADMIN": "Administrator",
+      "Upgrade": "Upgrade"
+    }
+  },
+  "CopyButton": {
+    "Copy": "Copy",
+    "Copied": "Copied"
+  },
+  "PricingPage": {
+    "Title": "Pricing",
+    "Description": "Plans and pricing",
+    "TODO": "The payment system has been disabled for the moment. The free plan has been temporarily upgraded to the Pro plan for all users."
+  },
+  "LandingPage": {
+    "Buttons": {
+      "SignIn": "Sign in",
+      "CTA": "Get your webhook URL"
+    },
+    "Slogan": {
+      "Part1": "Debug your webhooks with",
+      "Part2": "persistent storage"
+    },
+    "Description": "Inspect payloads, replay requests, and monitor your webhooks in real-time. Never lose a webhook event again thanks to automatic persistence.",
+    "FeatureCards": {
+      "Feature1": {
+        "Title": "Inspect payloads",
+        "Description": "View full webhook payloads with syntax highlighting and search functionality."
+      },
+      "Feature2": {
+        "Title": "Replay requests",
+        "Description": "Replay any webhook to your endpoint for easy testing and debugging."
+      },
+      "Feature3": {
+        "Title": "Monitor in real-time",
+        "Description": "Track webhook delivery, response times, and success rates with live analytics."
+      }
+    },
+    "Trusted": {
+      "Badge": "Trusted by developers",
+      "Title": "Built for developer workflows",
+      "Description": "Thousands of developers trust WPT to debug and monitor their webhook integrations."
+    },
+    "Documentation": {
+      "Badge": "Platform features",
+      "Title": "Everything you need to test your webhooks",
+      "Description": "Powerful features designed for developers looking for reliable webhook testing and debugging tools.",
+      "Features": {
+        "Feature1": {
+          "Title": "Schedule your times",
+          "Description": "Explore your data, build your dashboard, and bring your team together."
+        },
+        "Feature2": {
+          "Title": "From data to insights in minutes",
+          "Description": "Turn your raw data into actionable insights with powerful analytics tools."
+        },
+        "Feature3": {
+          "Title": "Collaborate seamlessly",
+          "Description": "Work together in real-time with your team and share insights instantly."
+        }
+      }
+    },
+    "Pricing": {
+      "Badge": "Plans and pricing",
+      "Title": "Simple and transparent pricing",
+      "Description": "Start testing your webhooks for free. Upgrade to Pro for advanced features and higher limits when you need them.",
+      "Billing": {
+        "Monthly": "Monthly",
+        "Annually": "Yearly",
+        "BilledMonthly": "per month",
+        "BilledAnnually": "per month, billed annually",
+        "Forever": "forever"
+      },
+      "Plans": {
+        "FREE": "Perfect for testing and small projects.",
+        "PRO": "Advanced features.",
+        "Popular": "POPULAR"
+      },
+      "Advantages": {
+        "RequestPerMonth": "requests per month",
+        "WebhookCount": "webhook",
+        "History": "days of request history",
+        "ReplayRequest": "Replay your requests"
+      },
+      "CTA": {
+        "FREE": "Start for free",
+        "PRO": "Get started"
+      }
+    },
+    "CTA": {
+      "FREE": "Start for free",
+      "Title": "Ready to transform your business?",
+      "Description": "Join thousands of companies optimizing their operations, managing their schedules, and growing with data-driven insights."
+    },
+    "Footer": {
+      "Legal": "Legal Notice",
+      "AllRightsReserved": "All rights reserved",
+      "Terms": "Terms of Service",
+      "Privacy": "Privacy Policy"
+    },
+    "FAQ": {
+      "Title": "Frequently Asked Questions",
+      "Description": "Explore your data, build your dashboard, and bring your team together."
+    }
+  },
+  "Datatable": {
+    "LinesPerPage": "Rows per page",
+    "Amount": "{count, plural, one {# item} other {# items}}",
+    "PageNumber": "Page {page} of {pages}",
+    "NoData": "No results",
+    "NA": "N/A"
+  },
+  "DeleteConfirmationModal": {
+    "Confirmation": "Confirmation",
+    "Cancel": "Cancel",
+    "Confirm": "Confirm",
+    "Error": "An error occurred"
+  },
+  "Auth": {
+    "SignInPage": {
+      "Title": "Welcome back",
+      "Subtitle": "Sign in with your credentials",
+      "Methods": {
+        "Google": "Sign in with Google",
+        "Github": "Sign in with Github",
+        "Other": "Or sign in with"
+      },
+      "Form": {
+        "Email": "Email address",
+        "Password": "Password",
+        "Submit": "Sign in",
+        "Errors": {
+          "InvalidCredentials": "Invalid credentials",
+          "GenericError": "An error occurred, please try again later"
+        }
+      },
+      "Footer": {
+        "NoAccount": "Don't have an account? ",
+        "SignUp": "Sign up"
+      }
+    },
+    "SignUpPage": {
+      "Title": "Welcome",
+      "Subtitle": "Sign up with your credentials",
+      "Methods": {
+        "Google": "Sign up with Google",
+        "Github": "Sign up with Github",
+        "Other": "Or sign up with"
+      },
+      "Form": {
+        "Username": "Username",
+        "Email": "Email address",
+        "Password": "Password",
+        "Submit": "Sign up",
+        "Errors": {
+          "EmailAlreadyTaken": "This email address is already taken",
+          "GenericError": "An error occurred, please try again later"
+        }
+      },
+      "Footer": {
+        "AlreadyHaveAccount": "Already have an account? ",
+        "SignIn": "Sign in"
+      }
+    },
+    "Footer": {
+      "Title": "By signing in, you agree to our",
+      "Terms": "Terms of Service",
+      "AndConditions": " and our ",
+      "Privacy": "Privacy Policy"
+    }
+  },
+  "DashboardPage": {
+    "Title": "Dashboard",
+    "Description": "General information",
+    "InfoCard": {
+      "RequestsCount": {
+        "Title": "Total Requests",
+        "Description": "Total number of requests made"
+      },
+      "WebhooksCount": {
+        "Title": "Total Webhooks",
+        "Description": "Total number of webhooks created"
+      },
+      "Plan": {
+        "Title": "Your Plan",
+        "Description": "Details of your current plan"
+      },
+      "Webhooks": {
+        "Title": "My Webhooks",
+        "Description": "List of your active webhooks"
+      },
+      "Requests": {
+        "Title": "Recent Request Activity",
+        "Description": "Number of requests over the last 7 days"
+      }
+    }
+  },
+  "WebhookPage": {
+    "Title": "Webhooks",
+    "Description": "Webhook management",
+    "MaxWebhooks": "Number of webhooks for your plan",
+    "Usage": {
+      "Title": "How to use the webhook?",
+      "Description": "Copy your webhook URL below and use it in your application to send requests to it. Every request sent will be logged and displayed in the table below.",
+      "CurlIndication": "Usage example with curl"
+    },
+    "Datatable": {
+      "Name": "Name",
+      "URL": "URL",
+      "RequestsCount": "Request count",
+      "DeleteMessage": "Are you sure you want to delete this webhook? This action is irreversible and will delete all related requests."
+    },
+    "Errors": {
+      "404": "The webhook was not found",
+      "400": "Cannot delete the webhook, it is being used elsewhere",
+      "UNKNOWN": "An error occurred"
+    },
+    "WebhookDetail": {
+      "Datatable": {
+        "Method": "Method",
+        "Origin": "Origin",
+        "Ip": "IP Address",
+        "DeleteMessage": "Are you sure you want to delete this request? This action is irreversible."
+      }
+    }
+  },
+  "AdminPage": {
+    "Description": "Data management & statistics"
+  },
+  "RequestDetailSheet": {
+    "Title": "Request Details #{requestId}",
+    "GlobalInfo": {
+      "Title": "General Information",
+      "Ip": "IP Address",
+      "Size": "Content size",
+      "UserAgent": "User-Agent",
+      "Origin": "Origin"
+    },
+    "Headers": "Headers",
+    "Body": "Body",
+    "QueryParams": "Query Params"
+  }
+}
