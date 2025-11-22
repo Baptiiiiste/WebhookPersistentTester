@@ -14,6 +14,7 @@
 - Handle stripe integration
 - Handle billing page
 - Handle plan selection
+- Fix missing translations (Sidebar, disconnect button)
 
 # Future features
 - Auto deletion of requests after a certain period of time
