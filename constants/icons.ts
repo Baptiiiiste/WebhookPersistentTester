@@ -7,4 +7,5 @@ export const ICONS: Record<string, LucideIcon> = {
   ADMIN: User,
   WEBHOOKS: Webhook,
   UPGRADE: Zap,
+  PRICING: Zap,
 }

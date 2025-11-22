@@ -4,14 +4,19 @@ import { ROUTES } from '@/constants/routes'
 import { signIn } from '@/lib/auth/handlers'
 import type { SignUpSchema } from '@/lib/schemas/auth.schema'
 import { insertCredentialsService } from '@/services/auth/insert-credentials.service'
+import { createWebhookService } from '@/services/webhook/create'
 
 export async function signUpCredentialsAction(values: SignUpSchema) {
   try {
-    await insertCredentialsService({
+    const user = await insertCredentialsService({
       email: values.email.toLowerCase(),
       username: values.username,
       password: values.password,
     })
+
+    // TODO: Replace the code below by a "Add" button in the webhook page
+    await createWebhookService("Webhook", user.id)
+    //
 
     await signIn('credentials', {
       email: values.email.toLowerCase(),
