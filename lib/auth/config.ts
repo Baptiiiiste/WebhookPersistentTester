@@ -5,7 +5,7 @@ export const AUTH_CONFIG: NextAuthConfig = {
   pages: {
     signIn: '/' + ROUTES.SIGN_IN,
   },
-
+  trustHost: true,
   cookies: {
     callbackUrl: {
       options: {
