@@ -19,11 +19,6 @@ export default async function DashboardPage() {
   const webhooks = await getAllWebhooksForLoggedUserActions()
   const requestLogs = webhooks.items.flatMap((w) => w.requestLogs)
 
-  const handleCreate = async (name: string) => {
-    'use server'
-    return createWebhookAction(name);
-  }
-
   return (
     <PageLayout.Root className="h-screen">
       <PageLayout.Icon icon={ICONS.DASHBOARD} color="#3b82f6" />
@@ -82,7 +77,7 @@ export default async function DashboardPage() {
 
         <div className="grid gap-6 md:grid-cols-1 xl:grid-cols-3 flex-1 mt-6">
           <div className="lg:col-span-1">
-            <DashboardWebhooksCard webhooks={webhooks.items} handleCreate={handleCreate()} />
+            <DashboardWebhooksCard webhooks={webhooks.items} />
           </div>
           <div className="lg:col-span-2">
             <DashbordRequestChartCard requestLogs={requestLogs} />
