@@ -43,6 +43,48 @@ jobs:
       - name: Build app
         run: pnpm build
 
+  # SonarQube Scan
+  sonar-scan:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
+
+      - name: Tests (with coverage report)
+        run: pnpm run test -- --coverage --coverage-reporters=lcov
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarcloud-github-action@v2.2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=wpt
+            -Dsonar.projectName=WPT
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+
   # 2️⃣ Build & push Docker image
   docker-build-push:
     runs-on: ubuntu-latest
