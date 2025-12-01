@@ -72,7 +72,7 @@ jobs:
         run: pnpm prisma generate
 
       - name: Tests (with coverage report)
-        run: pnpm run test -- --coverage --coverage-reporters=lcov --passWithNoTests
+        run: pnpm exec jest --runInBand --coverage --coverage-reporters=lcov --passWithNoTests
 
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@v2.2.0
