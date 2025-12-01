@@ -147,8 +147,6 @@ jobs:
           echo "🔧 Deploying on DEV..."
           cd /home/baptiste/Dev/WPT/dev
           docker-compose pull
-          # stop + remove DEV containers ONLY (keeps volumes)
           docker-compose down
-          # recreate containers, reusing existing volumes
           docker-compose up -d --remove-orphans
           echo "🚀 Deployed in DEV!"
