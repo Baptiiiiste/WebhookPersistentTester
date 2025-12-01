@@ -79,9 +79,10 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -sonar.projectKey=wpt
-            -sonar.projectName=WPT
-            -sonar.javascript.lcov.reportPaths=./coverage/lcov.info
+            -Dsonar.projectKey=wpt
+            -Dsonar.projectName=WPT
+            -Dsonar.organization=WPT
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
 
   docker-build-push:
     runs-on: ubuntu-latest
