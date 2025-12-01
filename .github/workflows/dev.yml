@@ -12,7 +12,6 @@ on:
       - main
 
 jobs:
-  # 1️⃣ Build & tests
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -43,7 +42,47 @@ jobs:
       - name: Build app
         run: pnpm build
 
-  # 2️⃣ Build & push Docker image
+  sonar-scan:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
+
+      - name: Tests (with coverage report)
+        run: pnpm exec jest --runInBand --coverage --coverage-reporters=lcov --passWithNoTests
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=WPT
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+
   docker-build-push:
     runs-on: ubuntu-latest
     needs: build-and-test
@@ -85,7 +124,6 @@ jobs:
           build-args: |
             NEXT_PUBLIC_ENV=develop
 
-  # 3️⃣ Deploy DEV
   deploy-dev:
     runs-on: self-hosted
     needs: docker-build-push
@@ -109,8 +147,6 @@ jobs:
           echo "🔧 Deploying on DEV..."
           cd /home/baptiste/Dev/WPT/dev
           docker-compose pull
-          # stop + remove DEV containers ONLY (keeps volumes)
           docker-compose down
-          # recreate containers, reusing existing volumes
           docker-compose up -d --remove-orphans
           echo "🚀 Deployed in DEV!"
