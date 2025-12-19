@@ -178,7 +178,7 @@ What is deployed here on my server:
 - Next.js application container
 
 Access the application here:
-- link: https://wpt-dev.baptiiiste.com
+- link: https://wpt.baptiiiste.com
 - create your own account to test, with not sensitive information
 
 ## Deployment on Private Server
