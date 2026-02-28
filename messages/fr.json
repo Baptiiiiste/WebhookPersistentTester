@@ -107,7 +107,7 @@
       "Description": "Explorez vos données, créez votre tableau de bord, et rassemblez votre équipe."
     }
   },
-  "Datatable" : {
+  "Datatable": {
     "LinesPerPage": "Lignes par page",
     "Amount": "{count, plural, one {# élément} other {# éléments}}",
     "PageNumber": "Page {page} sur {pages}",
@@ -144,7 +144,7 @@
       }
     },
     "SignUpPage": {
-      "Title": "Bienvenue",
+      "Title": "Bienvenue !",
       "Subtitle": "Inscrivez-vous avec vos identifiants",
       "Methods": {
         "Google": "Se connecter avec Google",
@@ -193,30 +193,30 @@
         "Title": "Mes webhooks",
         "Description": "Liste de vos webhooks actifs"
       },
-        "Requests": {
-          "Title": "Activité récente des requêtes",
-          "Description": "Nombre de requêtes au cours des 7 derniers jours"
-        }
+      "Requests": {
+        "Title": "Activité récente des requêtes",
+        "Description": "Nombre de requêtes au cours des 7 derniers jours"
+      }
     }
   },
   "WebhookPage": {
     "Title": "Webhooks",
     "Description": "Gestion des webhooks",
     "MaxWebhooks": "Nombre de webhooks pour votre plan",
-    "Usage" : {
+    "Usage": {
       "Title": "Comment utiliser le webhook ?",
       "Description": "Copiez l'url de votre webhook ci-dessous et utilisez-la dans votre application pour y envoyer des requêtes. Chaque requête envoyée sera enregistrée et affichée dans le tableau ci-dessous.",
       "CurlIndication": "Exemple d'utilisation avec curl"
     },
-    "Datatable" : {
+    "Datatable": {
       "Name": "Nom",
       "URL": "URL",
       "RequestsCount": "Nombre de requêtes",
       "DeleteMessage": "Êtes-vous sûr de vouloir supprimer ce webhook ? Cette action est irréversible et supprimera toutes les requêtes liées."
     },
     "Errors": {
-      "404": "Le webhook n'a pas été trouvé" ,
       "400": "Impossible de supprimer le webhook, il est utilisé ailleurs",
+      "404": "Le webhook n'a pas été trouvé",
       "UNKNOWN": "Une erreur est survenue"
     },
     "WebhookDetail": {

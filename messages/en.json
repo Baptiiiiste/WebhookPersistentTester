@@ -144,7 +144,7 @@
       }
     },
     "SignUpPage": {
-      "Title": "Welcome",
+      "Title": "Welcome !",
       "Subtitle": "Sign up with your credentials",
       "Methods": {
         "Google": "Sign up with Google",
@@ -215,8 +215,8 @@
       "DeleteMessage": "Are you sure you want to delete this webhook? This action is irreversible and will delete all related requests."
     },
     "Errors": {
-      "404": "The webhook was not found",
       "400": "Cannot delete the webhook, it is being used elsewhere",
+      "404": "The webhook was not found",
       "UNKNOWN": "An error occurred"
     },
     "WebhookDetail": {
