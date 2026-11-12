@@ -10,8 +10,7 @@
     "lint:fix": "next lint --fix",
     "prisma:seed": "node prisma/seed.js",
     "test": "jest --runInBand",
-    "test:watch": "jest --watch",
-    "postinstall": "sh ./.ci-begafv.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@faker-js/faker": "^10.0.0",
